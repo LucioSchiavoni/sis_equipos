@@ -1,0 +1,16 @@
+
+
+services:
+  sis_tasksDB:
+    image: postgres:15-alpine
+    container_name: sis_tasks
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - sis_tasks_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  sis_tasks_data:
