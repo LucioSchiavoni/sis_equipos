@@ -1,23 +1,24 @@
-import { getServerSession } from 'next-auth'
-import React from 'react'
-import { authOptions } from '../api/auth/[...nextauth]/route'
-import { redirect } from 'next/navigation'
+import { redirect } from 'next/navigation';
+import { auth } from '../api/auth/[...nextauth]/route';
+import Logout from '../components/auth/Logout';
 
 export default async function DashboardPage() {
 
-  const session = await getServerSession(authOptions)
-
+  const session = await auth()
   if( !session){
-    redirect('/api/auth/signin');
+    redirect('/register');
   }
-  return (
-    <div className='bg-white text-white min-h-screen text-2xl'>
 
-        <p>Hola usuario!!!</p>
-        {
-           session.user?.name
-        }
+  return (
+    <div>
+      <aside className='absolute top-5 right-10'>
+              <Logout/>
+      </aside>
+
+      <main className='min-h-screen flex items-center  flex-col'>
+          <h1 className='text-center '>El dashboard</h1>
+        <h1>{session?.user?.name}</h1>
+      </main>
     </div>
   )
 }
-

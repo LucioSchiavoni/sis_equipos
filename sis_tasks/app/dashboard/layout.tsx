@@ -1,9 +1,21 @@
-import React from 'react'
+import { redirect } from "next/navigation";
+import { auth } from "../api/auth/[...nextauth]/route";
 
-const layout = () => {
+export default async function Layout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+
+  const session = await auth();
+  if( !session?.user){
+   return redirect('/register');
+  }
+
   return (
-    <div>layout</div>
-  )
+    <div>
+      {children}
+    </div>
+  );
 }
 
-export default layout

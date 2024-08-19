@@ -1,13 +1,16 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import LoginForm from "./components/forms/FormLogin"
 
 
-export default function Home() {
 
+export default async function Home() {
+
+ 
+    
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        <h1>Home</h1>
-        <p>form</p>
+        <LoginForm/>
+   <h1>Hola</h1>
+ 
     </main>
   );
 }

@@ -1,18 +1,19 @@
 import prisma from "@/app/lib/prisma";
 import bcrypt from 'bcryptjs'
 
-export const signIn = async(username: string, password: string) => {
+export const signInCredentials = async(username: string, password: string) => {
 
     if( !username || !password) return null;
 
     const user = await prisma.user.findUnique({where: {username}})
 
     if(!user){
-        const dbUser = await createUser(username, password, username)
-        return dbUser;
+        // const dbUser = await createUser(username, password, username)
+
+        console.log("Usuario no encontrado")
     }
     
-    if(!bcrypt.compareSync(password, user.password ?? '')){
+    if(!bcrypt.compareSync(password, user?.password ?? '')){
         return null
     }
     return user;

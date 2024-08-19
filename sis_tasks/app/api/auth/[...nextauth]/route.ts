@@ -1,35 +1,43 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client"
-import { NextAuthOptions } from "next-auth";
 import { Adapter } from "next-auth/adapters";
 import Credentials from "next-auth/providers/credentials"
-import { signIn } from "../actions/auth-actions";
-import NextAuth from "next-auth/next";
+import { signInCredentials } from "../actions/auth-actions";
+import NextAuth from "next-auth";
+import { signInSchema } from "@/app/lib/zod";
+import { ZodError } from "zod";
 
 const prisma = new PrismaClient();
 
 
-export const authOptions: NextAuthOptions = {
+export const {handlers, signIn, signOut, auth} = NextAuth({
     adapter: PrismaAdapter(prisma) as Adapter,
     providers: [
         Credentials({
-      // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-      // e.g. domain, username, password, 2FA token, etc.
+          name:"Credentials",
       credentials: {
         username: { label: "Nombre de usuario", type: "text", placeholder: "nombre.apellido"},
         password: { label: "Contraseña", type: "password", placeholder: "******"},
       },
       authorize: async (credentials) => {
-        
-    const user = await signIn(credentials!.username, credentials!.password)
+        try {
+           let user = null
+
+        const {username, password} = await signInSchema.parseAsync(credentials)
+         user = await signInCredentials(username, password)
  
         if (!user) {
-
+          console.log('no se encuentra el usuario')
           throw new Error("User not found.")
         }
  
-        // return user object with their profile data
         return user
+        } catch (error) {
+          if(error instanceof ZodError){
+            return null
+          }
+        }
+       
       },
     }),
     ],
@@ -37,10 +45,13 @@ export const authOptions: NextAuthOptions = {
     session:{
         strategy: 'jwt'
     },
+    pages:{
+      signIn: "/register"
+    },
     
     callbacks:{
         async signIn({user, account, profile, credentials}){
-
+           
             return true;
         },
 
@@ -50,11 +61,11 @@ export const authOptions: NextAuthOptions = {
         },
 
         async session({session, token, user}) {
-
+  
           return session;
         },
     }
-}
+})
 
-const handler = NextAuth(authOptions);
-export {handler as GET, handler as POST};
+
+export const {GET, POST} = handlers;
