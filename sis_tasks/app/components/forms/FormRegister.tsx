@@ -4,23 +4,31 @@ import { useState } from 'react'
 
 import { Input } from '@/components/ui/input'
 import { createUser } from '@/app/api/auth/actions/auth-actions'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 const FormRegister = () => {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
+  const [error, setError] = useState(""); 
+  const router = useRouter();
 
 
   const handleForm = async(e: any) => {
     e.preventDefault()
-    try {
-  
+    setError("")
+    try { 
       const result = await createUser(username, password, name)
-      return result;
+      if(result){
+         toast.success("Usuario creado con exito!")
+          router.push("/login")
+      }else{
+        setError("El usuario ya existe")
+      }
     } catch (error) {
-      console.log(error)
+      setError("El usuario ya existe")
     }
   }
 
@@ -50,6 +58,8 @@ const FormRegister = () => {
            <Input type='password' value={password} className='text-xl' onChange={(e) => setPassword(e.target.value)} />
         </div>
     <button type='submit' className='px-3 py-1 rounded-md border'>Registrarse</button>
+
+   {error && <div className='text-red-500'>{error}</div>}
       </form>
    
    

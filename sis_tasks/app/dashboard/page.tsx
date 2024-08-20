@@ -9,13 +9,13 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <aside className='absolute top-5 right-10'>
-              <Logout/>
-      </aside>
+
 
       <main className='min-h-screen flex items-center  flex-col'>
-          <h1 className='text-center '>El dashboard</h1>
-        <h1>{session?.user?.name}</h1>
+
+      <div>
+        
+      </div>
       </main>
     </div>
   )

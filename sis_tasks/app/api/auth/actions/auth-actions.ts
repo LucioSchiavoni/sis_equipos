@@ -1,3 +1,4 @@
+"use server";
 import prisma from "@/app/lib/prisma";
 import bcrypt from 'bcryptjs'
 
@@ -25,7 +26,7 @@ export const createUser = async (username: string, password: string, name: strin
 
       const existUser = await prisma.user.findUnique({where: {username}})
              if(existUser){
-                return null
+                throw new Error("Usuario ya existe")
              }
         const user = await prisma.user.create({
         data:{
@@ -34,9 +35,9 @@ export const createUser = async (username: string, password: string, name: strin
             name: name 
         }
     })
-    console.log(user) 
+        return user;
     } catch (error) {
-        console.log(error)
+        throw new Error('Error al crear usuario');
     }
 
 }
