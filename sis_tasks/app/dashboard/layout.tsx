@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import {  redirect } from "next/navigation";
 import { auth } from "../api/auth/[...nextauth]/route";
 
 export default async function Layout({
@@ -9,7 +9,7 @@ export default async function Layout({
 
   const session = await auth();
   if( !session?.user){
-   return redirect('/register');
+   return redirect("/login")
   }
 
   return (
