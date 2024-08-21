@@ -19,25 +19,26 @@ export const {handlers, signIn, signOut, auth} = NextAuth({
         username: { label: "Nombre de usuario", type: "text", placeholder: "nombre.apellido"},
         password: { label: "Contraseña", type: "password", placeholder: "******"},
       },
-      authorize: async (credentials) => {
+      async authorize(credentials): Promise<any>  {
         try {
-           let user = null
 
+          let user = null
         const {username, password} = await signInSchema.parseAsync(credentials)
-         user = await signInCredentials(username, password)
- 
+        user = await signInCredentials(username, password)
+
         if (!user) {
-          console.log('no se encuentra el usuario')
           throw new Error("User not found.")
         }
- 
+        
         return user
         } catch (error) {
           if(error instanceof ZodError){
-            return null
+            return { msg: "Datos inválidos", status: "error" };
+            
+          }else{
+              return { msg: "Ocurrió algo inesperado", status: "error" };
           }
         }
-       
       },
     }),
     ],

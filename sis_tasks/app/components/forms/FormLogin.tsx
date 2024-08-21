@@ -16,6 +16,8 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const router = useRouter()
 
+
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -27,7 +29,7 @@ const LoginForm = () => {
 );
 
     if (result?.error) {
-      setError(result.error);
+      setError(result?.error);
     }else{
         router.push("/dashboard")
     }
@@ -41,15 +43,14 @@ const LoginForm = () => {
           translateZ="100"
           className="text-xl  text-neutral-700 dark:text-white"
         >
+
       <form onSubmit={handleSubmit} className="space-y-12 ">
             <div className="space-y-2">
               <label>Username</label>
          
                 <Input placeholder="nombre.apellido" className="text-xl" value={username} onChange={(e) => setUsername(e.target.value)} />
        
-              <span>
-               {error ? error : null}
-              </span>
+          
             
             </div>
                <div className="space-y-2">
@@ -57,8 +58,8 @@ const LoginForm = () => {
            
                 <Input placeholder="*******" type="password" className="text-xl" value={password} onChange={(e) => setPassword(e.target.value)} />
               
-           <span>
-               {error ? error : null}
+           <span className="text-red-400 ">
+             <p className="mt-4 px-4 font-">{error ? error : null}</p>  
               </span>
             </div>
     
