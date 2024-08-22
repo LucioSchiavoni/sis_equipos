@@ -35,11 +35,11 @@ const FormRegister = () => {
 
   return (
 
-      <form onSubmit={handleForm} className='space-y-12 w-80 text-xl'>   
+      <form onSubmit={handleForm} className='space-y-12 w-80 text-xl '>   
       
                <div>
           <label htmlFor="
-          ">Nombre de usuario</label>
+          ">Nombre completo</label>
           
            <Input value={name} className='text-xl'   onChange={(e) => setName(e.target.value)} />
         </div>

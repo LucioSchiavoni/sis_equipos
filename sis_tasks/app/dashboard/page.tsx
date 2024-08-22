@@ -1,6 +1,11 @@
 
+
 import Link from 'next/link';
 import { auth } from '../api/auth/[...nextauth]/route';
+
+
+import EquiposTable from '../components/table/EquiposTable';
+
 
 
 export default async function DashboardPage() {
@@ -15,7 +20,7 @@ export default async function DashboardPage() {
       <Link href={"/equipos"} className='border px-3 py-1 w-36 rounded-md'>Nuevo equipo</Link>
         <input type="text" placeholder='Buscar por...' className='border px-3 py-2 rounded-md w-6/12 m-auto' name="" id="" />
       <div className='border w-full h-64 p-4'>
-        <p className='text-3xl'>Tabla de los equipos</p>
+        <EquiposTable/>
       </div>
       </div>
       </main>

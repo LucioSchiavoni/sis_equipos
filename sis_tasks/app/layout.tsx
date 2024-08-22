@@ -7,6 +7,7 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -19,6 +20,8 @@ const fontSans = FontSans({
   variable: "--font-sans",
 })
 
+const queryClient = new QueryClient();
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,9 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
+         <QueryClientProvider client={queryClient}>
         <SessionProvider>
           {children}
-        </SessionProvider>
+        </SessionProvider> 
+     </QueryClientProvider>
         <ToastContainer/>
         </body>
     </html>
