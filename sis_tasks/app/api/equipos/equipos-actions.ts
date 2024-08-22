@@ -46,7 +46,20 @@ export const createEquipo = async(data: any) => {
 
 export const getEquipos = async(): Promise<any[]> => {
     try {
-        return await prisma.equipo.findMany();
+        return await prisma.equipo.findMany({
+            include:{
+                aplicaciones: {
+                    select:{
+                        instalada: true,
+                        aplicacion:{
+                            select:{
+                                nombre:true
+                            }
+                        }
+                    }
+                }
+            }
+        });
 
     } catch (error) {
         console.log(error)
