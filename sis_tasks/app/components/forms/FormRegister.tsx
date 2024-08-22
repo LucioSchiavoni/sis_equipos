@@ -15,7 +15,7 @@ const FormRegister = () => {
   const [error, setError] = useState(""); 
   const router = useRouter();
 
-
+  
   const handleForm = async(e: any) => {
     e.preventDefault()
     setError("")

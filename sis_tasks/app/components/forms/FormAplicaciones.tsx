@@ -13,16 +13,17 @@ const FormAplicaciones = () => {
 
     const [nombre, setNombre] = useState("")
 
- 
+ const queryClient = useQueryClient();
     const handleSubmit = async(e: any) => {
         e.preventDefault()  
-        const queryClient = useQueryClient();
+        
         try {
             const res = await createAplicaciones(nombre)
             
             if(res?.success){
               await queryClient.invalidateQueries({queryKey: ['aplicaciones']})
                 toast.success(res?.success)
+                
             }else{
                 toast.info(res?.info)
             }

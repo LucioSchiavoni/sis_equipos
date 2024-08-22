@@ -33,7 +33,7 @@ const FormEquipos = () => {
   if(error) return ( 
     <div>Error al cargar los datos...</div>
   )
-
+ const queryClient = useQueryClient();
 
 const handleCheckboxChange = (aplicacionId: number) => {
   setSelectedAplicaciones(prev => {
@@ -50,7 +50,7 @@ const handleCheckboxChange = (aplicacionId: number) => {
 const handleSubmit = async (e: React.FormEvent) => {
 
   e.preventDefault();
- const queryClient = useQueryClient();
+
 
   try {
 
@@ -78,15 +78,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 };
 
 
-  if (!aplicaciones || aplicaciones.length === 0) {
-    return (
-      <div className="flex justify-center items-center">
-        <div className="border p-4 mt-24 space-y-5 w-4/12">
-          <div>No hay aplicaciones disponibles.</div>
-        </div>
-      </div>
-    )
-  }
+
 
 if(aplicaciones)
   return (
@@ -108,6 +100,9 @@ if(aplicaciones)
                 <label htmlFor="">Autor</label>
                 <Input placeholder="Autor.." value={autor}  onChange={(e) => setAutor(e.target.value)} />
             </div>
+            {
+              !aplicaciones || aplicaciones.length === 0 ? <div>No hay aplicaciones disponibles</div> : null
+            }
             {
               aplicaciones?.map((app: {id: number, nombre: string}) => (
                 <div key={app.id}>

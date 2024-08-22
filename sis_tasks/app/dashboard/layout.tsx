@@ -15,7 +15,7 @@ export default async function Layout({
 
   return (
     <div>
-      <nav className="mt-5">
+      <nav className="">
           <Navbar/> 
       </nav>
    
