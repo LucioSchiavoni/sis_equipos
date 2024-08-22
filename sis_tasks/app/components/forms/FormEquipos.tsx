@@ -20,7 +20,7 @@ const FormEquipos = () => {
 
     const { data: aplicaciones, isLoading, error } = useQuery<any[]>({
     queryKey: ['aplicaciones'],
-    queryFn:  getAplicaciones
+    queryFn:  () =>getAplicaciones()
   })
 
 
