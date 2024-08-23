@@ -1,11 +1,11 @@
 'use client';
 
-import { Checkbox } from "@/components/ui/checkbox"
+
 import { getAplicaciones } from "@/app/api/aplicaciones/aplicaciones-actions"
 import { createEquipo } from "@/app/api/equipos/equipos-actions"
-import { Input } from "@/components/ui/input"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { Check } from "lucide-react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { useState } from "react"
 import { toast } from "react-toastify"
 
@@ -79,7 +79,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 if(aplicaciones)
   return (
     <div className="flex justify-center items-center">
-        <form onSubmit={handleSubmit} className="border p-4 mt-24 space-y-5 w-4/12">
+        <form onSubmit={handleSubmit} className="border border-gray-800 rounded-md  p-6 mt-24 space-y-5 w-4/12">
             <div className="space-y-2">
                 <label htmlFor="">Nombre de PC</label>
                 <Input placeholder="DGS-PC.." value={pcName}  onChange={(e) => setPcName(e.target.value)} />
@@ -96,6 +96,8 @@ if(aplicaciones)
                 <label htmlFor="">Autor</label>
                 <Input placeholder="Autor.." value={autor}  onChange={(e) => setAutor(e.target.value)} />
             </div>
+   
+            
 
             {
               !aplicaciones || aplicaciones.length === 0 ? <div>No hay aplicaciones disponibles</div> : null
@@ -118,7 +120,10 @@ if(aplicaciones)
               ))
             } 
             </div>
-            <button className="px-3 py-2 rounded-md border " type="submit">Registrar</button>
+            <div className="flex items-center justify-center">
+                <button className="hover:bg-neutral-800 py-1 w-64 text-xl  rounded-md border border-neutral-800 " type="submit">Registrar</button>
+            </div>
+          
         </form>
     </div>
   )

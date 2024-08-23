@@ -34,6 +34,7 @@ import EquiposTable from '../components/table/EquiposTable';
 import { BsPcDisplayHorizontal } from "react-icons/bs";
 import AplicacionesNombre from '../components/modal/AplicacionesNombre';
 import Logout from '../components/auth/Logout';
+import { ExpandableCardDemo } from '../components/table/EquipoItem';
 
 
 export default async function DashboardPage() {
@@ -44,12 +45,9 @@ export default async function DashboardPage() {
 
   return (
 <>
-        <div className="flex min-h-screen w-full flex-col bg-neutral-900">
-       
+        <div className="flex min-h-screen w-full flex-col "> 
           <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
             <header className="sticky top-0  z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-              
-            
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -82,7 +80,7 @@ export default async function DashboardPage() {
                   <p className=' text-4xl'><BsPcDisplayHorizontal /></p>
                 </CardFooter>
               </Card>
-            <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 ">
+            <main className="grid flex-1 items-start gap-4 p-4  ">
               <Tabs defaultValue="all">
                 <div className="flex items-center">
 
@@ -117,16 +115,12 @@ export default async function DashboardPage() {
                     <AplicacionesNombre/>
                   </div>
                 </div>
-                <TabsContent value="all"  >
-                  
-                  <Card x-chunk="dashboard-06-chunk-0" className='bg-neutral-900 text-white border-none mt-8 ' >
-                    <CardContent>
+                <TabsContent value="all" >
+                     
                       
-                     <EquiposTable/>
+                    <EquiposTable/>
 
-                    </CardContent>
-          
-                  </Card>
+
                 </TabsContent>
               </Tabs>
             </main>

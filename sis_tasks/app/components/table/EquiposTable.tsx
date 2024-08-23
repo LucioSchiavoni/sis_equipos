@@ -34,11 +34,11 @@ import {
       DropdownMenuLabel,
       DropdownMenuTrigger,
     } from "@/components/ui/dropdown-menu"
-import Image from 'next/image';
-import Link from 'next/link';
+
 import AplicacionesNombre from '../modal/AplicacionesNombre';
-import { getAplicacionesById } from '@/app/api/aplicaciones/aplicaciones-actions';
+
 import { Input } from '@/components/ui/input';
+import { ExpandableCardDemo } from './EquipoItem';
 
 
 const EquiposTable = () => {
@@ -64,95 +64,22 @@ const EquiposTable = () => {
 if(data)
   return (
     <TabsContent value="all">
-<Card x-chunk="dashboard-06-chunk-0" className='bg-neutral-900 text-white border-neutral-700'>
+<Card x-chunk="dashboard-06-chunk-0" className='text-white  border-neutral-700 w-11/12 m-auto mt-4 bg-neutral-800 bg-opacity-50'>
   <CardHeader className="gap-4">
-    
     <CardTitle>Equipos</CardTitle>
     <CardDescription className='text-gray-700 '>
-       <div className="relative ml-auto flex-1 md:grow-0 ">
+       <div className="relative ml-auto md:grow-0 ">
                 <Search className="absolute left-2.5 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="Search..."
+                  placeholder="Buscar un equipo..."
                   className="w-full rounded-lg text-xl bg-background pl-8 text-black  lg:w-[336px]"
                 />
               </div>
     </CardDescription>
   </CardHeader>
-  <CardContent >
-    <Table>
-      <TableHeader >
-        <TableRow  >
-          <TableHead className='text-white'>Nombre PC</TableHead>
-          <TableHead className='text-white'>Numero de serie</TableHead>
-          <TableHead className="hidden md:table-cell text-white">
-            Autor
-          </TableHead>
-          <TableHead className="hidden md:table-cell text-white">
-              Unidad
-          </TableHead>
-          <TableHead className="hidden md:table-cell text-white">
-            Fecha
-          </TableHead>
-          <TableHead className='text-white'>
-            <span className="">Opciones</span>
-          </TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>  
-        {
-            data.map((equipos: any, index: any) => (
-              
-            <>
-            
-        <TableRow key={index} className=''>
-              
-          <TableCell className="hidden sm:table-cell">
-              {equipos.pcName}
-          </TableCell>
-          <TableCell className="hidden md:table-cell">
-            {equipos.numSerie}
-          </TableCell>
-          <TableCell className="font-medium">
-            {equipos.autor}
-          </TableCell>
-          <TableCell>
-            <Badge variant="outline" className='text-white'>{equipos.unidad}</Badge>
-          </TableCell>
-          <TableCell className="hidden md:table-cell">
-          {equipos.fecha}
-          </TableCell>
-          <TableCell>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  aria-haspopup="true"
-                  size="icon"
-                  variant="ghost"
-                >
-                  <MoreHorizontal className="h-4 w-4" />
-                  <span className="sr-only">Toggle menu</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem>Delete</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </TableCell>
-         <TableCell>
-          Ver detalles
-         </TableCell>
-
-        </TableRow>
-  
-         </>
-   ))
-}     
-      
-      </TableBody>
-    </Table>
+  <CardContent className='flex items-center justify-center '>
+    <ExpandableCardDemo equipos={data}  />
   </CardContent>
   <CardFooter>
     <div className="text-xs text-muted-foreground">
