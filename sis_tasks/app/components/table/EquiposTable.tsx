@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import {
   MoreHorizontal,
   PlusCircle,
+  Search,
 } from "lucide-react"
 import {
   Table,
@@ -35,6 +36,9 @@ import {
     } from "@/components/ui/dropdown-menu"
 import Image from 'next/image';
 import Link from 'next/link';
+import AplicacionesNombre from '../modal/AplicacionesNombre';
+import { getAplicacionesById } from '@/app/api/aplicaciones/aplicaciones-actions';
+import { Input } from '@/components/ui/input';
 
 
 const EquiposTable = () => {
@@ -44,14 +48,13 @@ const EquiposTable = () => {
         queryFn: () => getEquipos()
     })
 
+
     if(data && data.length === 0) return (
     <div className='text-gray-700 flex flex-col gap-5 text-2xl text-center'>
       Sin equipos creados.
       <Button size="sm" className="h-8 gap-1 w-36 m-auto">
                       <PlusCircle className="h-3.5 w-3.5" />
-                      <Link href={'/equipos'} className="sr-only  sm:not-sr-only sm:whitespace-nowrap">
-                        Agregar equipo
-                      </Link>
+                   <AplicacionesNombre/>
                     </Button>
       </div> )
 
@@ -62,11 +65,18 @@ if(data)
   return (
     <TabsContent value="all">
 <Card x-chunk="dashboard-06-chunk-0" className='bg-neutral-900 text-white border-neutral-700'>
-  <CardHeader>
+  <CardHeader className="gap-4">
     
     <CardTitle>Equipos</CardTitle>
-    <CardDescription className='text-white'>
-      Todos los equipos.
+    <CardDescription className='text-gray-700 '>
+       <div className="relative ml-auto flex-1 md:grow-0 ">
+                <Search className="absolute left-2.5 top-3 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Search..."
+                  className="w-full rounded-lg text-xl bg-background pl-8 text-black  lg:w-[336px]"
+                />
+              </div>
     </CardDescription>
   </CardHeader>
   <CardContent >
@@ -90,12 +100,13 @@ if(data)
         </TableRow>
       </TableHeader>
       <TableBody>  
-         {
+        {
             data.map((equipos: any, index: any) => (
-            <>  
+              
+            <>
+            
         <TableRow key={index} className=''>
-      
-       
+              
           <TableCell className="hidden sm:table-cell">
               {equipos.pcName}
           </TableCell>
@@ -130,9 +141,12 @@ if(data)
               </DropdownMenuContent>
             </DropdownMenu>
           </TableCell>
-         
+         <TableCell>
+          Ver detalles
+         </TableCell>
 
         </TableRow>
+  
          </>
    ))
 }     

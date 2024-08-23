@@ -30,3 +30,16 @@ export const getAplicaciones = async(): Promise<any[]> => {
     throw error; 
     }
 }
+
+
+export const getAplicacionesById = async(equipoId:string): Promise<any> => {
+    try {
+        return await prisma.aplicacion.findMany({where:{equipos:{
+            some:{
+                equipoId: +equipoId
+            }
+        }}})
+    } catch (error) {
+        console.log(error)
+    }
+}

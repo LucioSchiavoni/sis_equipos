@@ -36,8 +36,7 @@ const FormAplicaciones = () => {
   return (
     <div>
         <form onSubmit={handleSubmit} className="space-y-4 ">
-                <label htmlFor="">Nombre de la aplicacion</label>
-                <Input placeholder="Nombre.." value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                <Input placeholder="" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
                 <Button type="submit">Agregar </Button>
         </form>
     </div>

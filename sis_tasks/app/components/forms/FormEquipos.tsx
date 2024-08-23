@@ -1,9 +1,11 @@
 'use client';
 
+import { Checkbox } from "@/components/ui/checkbox"
 import { getAplicaciones } from "@/app/api/aplicaciones/aplicaciones-actions"
 import { createEquipo } from "@/app/api/equipos/equipos-actions"
 import { Input } from "@/components/ui/input"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { Check } from "lucide-react";
 import { useState } from "react"
 import { toast } from "react-toastify"
 
@@ -23,8 +25,7 @@ const FormEquipos = () => {
     queryFn:  () =>getAplicaciones()
   })
 
-
-
+  
   if(isLoading) return ( 
     <div>Cargando...</div>
   )
@@ -48,12 +49,9 @@ const handleCheckboxChange = (aplicacionId: number) => {
 };
 
 const handleSubmit = async (e: React.FormEvent) => {
-
   e.preventDefault();
 
-
   try {
-
       const equipoData = {
       pcName,
       numSerie,
@@ -65,9 +63,9 @@ const handleSubmit = async (e: React.FormEvent) => {
       })),
     };
     const res = await createEquipo(equipoData);
-
+    
     if (res?.success) {
-       queryClient.invalidateQueries({queryKey: ['equipos']});
+      queryClient.invalidateQueries({queryKey: ['equipos']});
       toast.success(res.success);
     } else {
       toast.error(res?.error || 'Ocurrió un error al crear el equipo');
@@ -76,8 +74,6 @@ const handleSubmit = async (e: React.FormEvent) => {
     toast.error('Error en la solicitud. Inténtalo de nuevo.');
   }
 };
-
-
 
 
 if(aplicaciones)
@@ -100,22 +96,28 @@ if(aplicaciones)
                 <label htmlFor="">Autor</label>
                 <Input placeholder="Autor.." value={autor}  onChange={(e) => setAutor(e.target.value)} />
             </div>
+
             {
               !aplicaciones || aplicaciones.length === 0 ? <div>No hay aplicaciones disponibles</div> : null
             }
+            <div className="grid grid-rows-4 gap-1">
+
+           
             {
               aplicaciones?.map((app: {id: number, nombre: string}) => (
-                <div key={app.id}>
-                <input
+                <div key={app.id} className="flex gap-2">
+                <input 
                 type="checkbox"
                 id={`app-${app.id}`}
+                className="text-2xl p-4 rounded-md"
                 onChange={() => handleCheckboxChange(app.id)}
                 checked={selectedAplicaciones.some(a => a.id === app.id && a.instalada)}
               />
               <label htmlFor={`app-${app.id}`}>{app.nombre}</label>
                 </div>
               ))
-            }
+            } 
+            </div>
             <button className="px-3 py-2 rounded-md border " type="submit">Registrar</button>
         </form>
     </div>

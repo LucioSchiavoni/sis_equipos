@@ -14,13 +14,13 @@ const AplicacionesNombre = () => {
     <>    
      <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Agregar aplicacion</Button>
+        <Button variant="outline">Agregar programa</Button>
       </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent className="sm:max-w-[425px] h-52 text-4xl">
         <DialogHeader>
-          <DialogTitle>Agregar aplicacion</DialogTitle>
+          <DialogTitle>  Introduce el nombre del programa</DialogTitle>
           <DialogDescription>
-          Nuevo nombre de aplicaciones
+          Por ej: Castaglia, Drivers, Antivirus, etc.
           </DialogDescription>
         </DialogHeader>
             <FormAplicaciones/>
