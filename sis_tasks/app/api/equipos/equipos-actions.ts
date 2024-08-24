@@ -66,3 +66,37 @@ export const getEquipos = async(): Promise<any[]> => {
             throw error; 
     }
 }
+
+
+export const deleteEquipo = async(id: number) => {
+    try {
+        const res = await prisma.equipo.delete({where:{id:id}})
+        return {success: "Equipo eliminado"}
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+export const editEquipo = async(id: number, data: any) => {
+    try {
+         const currentData = await prisma.equipo.findUnique({
+      where: { id }
+    });
+          if (!currentData) {
+      throw new Error("Equipo no encontrado");
+    }
+        const updatedData = {
+      ...currentData, 
+      ...data 
+    };
+
+        const res =  await prisma.equipo.update({
+            where: {id},
+            data: updatedData
+        })
+        return {success: "Se guardaron los cambios"}
+    } catch (error) {
+        console.log(error)
+    }
+}

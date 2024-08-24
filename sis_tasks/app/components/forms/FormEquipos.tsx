@@ -50,7 +50,7 @@ const handleCheckboxChange = (aplicacionId: number) => {
 
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-
+  
   try {
       const equipoData = {
       pcName,
@@ -79,35 +79,35 @@ const handleSubmit = async (e: React.FormEvent) => {
 if(aplicaciones)
   return (
     <div className="flex justify-center items-center">
-        <form onSubmit={handleSubmit} className="border border-gray-800 rounded-md  p-6 mt-24 space-y-5 w-4/12">
-            <div className="space-y-2">
+        <form onSubmit={handleSubmit} className="border border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-4/12">
+          <div className="space-y-2">
                 <label htmlFor="">Nombre de PC</label>
-                <Input placeholder="DGS-PC.." value={pcName}  onChange={(e) => setPcName(e.target.value)} />
+                <Input placeholder="DGS-PC.." className="text-black focus:border border-neutral-600" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
             </div>
-               <div className="space-y-2">
+            <div className="space-y-2">
                 <label htmlFor="">Numero de serie</label>
-                <Input placeholder="Serie.." value={numSerie}  onChange={(e) => setNumSerie(e.target.value)} />
+                <Input placeholder="Serie.." value={numSerie} className="text-black focus:border border-neutral-600"  onChange={(e) => setNumSerie(e.target.value)} />
             </div>
-               <div className="space-y-2">
+            <div className="space-y-2">
                 <label htmlFor="">Unidad</label>
-                <Input placeholder="Unidad.." value={unidad}  onChange={(e) => setUnidad(e.target.value)} />
+                <Input placeholder="Unidad.." value={unidad} className="text-black focus:border border-neutral-600"  onChange={(e) => setUnidad(e.target.value)} />
             </div>
-               <div className="space-y-2">
+              <div className="space-y-2">
                 <label htmlFor="">Autor</label>
-                <Input placeholder="Autor.." value={autor}  onChange={(e) => setAutor(e.target.value)} />
+                <Input placeholder="Autor.." value={autor}  className="text-black focus:border border-neutral-600" onChange={(e) => setAutor(e.target.value)} />
             </div>
-   
-            
+    
+
 
             {
               !aplicaciones || aplicaciones.length === 0 ? <div>No hay aplicaciones disponibles</div> : null
             }
-            <div className="grid grid-rows-4 gap-1">
+            <div className="grid grid-cols-2  gap-2">
 
-           
+          
             {
               aplicaciones?.map((app: {id: number, nombre: string}) => (
-                <div key={app.id} className="flex gap-2">
+                <div key={app.id} className="flex gap-2 items-center text-xl">
                 <input 
                 type="checkbox"
                 id={`app-${app.id}`}

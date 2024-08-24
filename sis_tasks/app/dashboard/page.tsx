@@ -33,8 +33,7 @@ import EquiposTable from '../components/table/EquiposTable';
 
 import { BsPcDisplayHorizontal } from "react-icons/bs";
 import AplicacionesNombre from '../components/modal/AplicacionesNombre';
-import Logout from '../components/auth/Logout';
-import { ExpandableCardDemo } from '../components/table/EquipoItem';
+
 
 
 export default async function DashboardPage() {
@@ -45,8 +44,8 @@ export default async function DashboardPage() {
 
   return (
 <>
-        <div className="flex min-h-screen w-full flex-col "> 
-          <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+        <div className="flex min-h-screen w-8/12 m-auto flex-col justify-center"> 
+          <div className="flex flex-col justify-center items-center ">
             <header className="sticky top-0  z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -69,7 +68,7 @@ export default async function DashboardPage() {
             </header>
 
             <Card
-                className="sm:col-span-2 w-3/12 flex ml-12 hover:scale-110 transition-all delay-150 duration-300" x-chunk="dashboard-05-chunk-0" >
+                className="sm:col-span-2  justify-start flex  hover:scale-110 transition-all delay-150 duration-300" x-chunk="dashboard-05-chunk-0" >
                 <Link href={'/equipos'} className="pb-8 p-6">
                   <CardTitle className='flex gap-4'>Registrar equipos </CardTitle>
                   <CardDescription className="max-w-lg  text-gray-600 text-balance mt-3">

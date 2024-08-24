@@ -31,9 +31,9 @@ equipos EquipoAplicacion[]
 }
 
 model EquipoAplicacion {
-  equipo      Equipo     @relation(fields: [equipoId], references: [id])
+  equipo      Equipo     @relation(fields: [equipoId], references: [id], onDelete: Cascade)
   equipoId    Int
-  aplicacion  Aplicacion @relation(fields: [aplicacionId], references: [id])
+  aplicacion  Aplicacion @relation(fields: [aplicacionId], references: [id], onDelete: Cascade)
   aplicacionId Int
   instalada   Boolean    @default(false)
 

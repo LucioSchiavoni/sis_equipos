@@ -64,7 +64,7 @@ const EquiposTable = () => {
 if(data)
   return (
     <TabsContent value="all">
-<Card x-chunk="dashboard-06-chunk-0" className='text-white  border-neutral-700 w-11/12 m-auto mt-4 bg-neutral-800 bg-opacity-50'>
+<Card x-chunk="dashboard-06-chunk-0" className='text-white  border-neutral-700 w-auto m-auto mt-4 bg-neutral-800 bg-opacity-50'>
   <CardHeader className="gap-4">
     <CardTitle>Equipos</CardTitle>
     <CardDescription className='text-gray-700 '>

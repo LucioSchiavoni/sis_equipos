@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -8,6 +9,7 @@ import { SessionProvider } from "next-auth/react";
 import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import { ChakraProvider } from '@chakra-ui/react'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -31,7 +33,9 @@ export default function RootLayout({
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ReactQueryProvider >
         <SessionProvider>
+          <ChakraProvider>
           {children}
+          </ChakraProvider>
         </SessionProvider> 
       </ReactQueryProvider>
         <ToastContainer/>

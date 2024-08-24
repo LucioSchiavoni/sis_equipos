@@ -3,8 +3,8 @@
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-click";
-import { TiEdit } from "react-icons/ti";
-import { MdOutlineDelete } from "react-icons/md";
+import { DeleteEquipo } from "../modal/DeleteEquipos";
+import { EditEqupo } from "../modal/EditEqupo";
 
 export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
   const [active, setActive] = useState<any | null>(null);
@@ -95,12 +95,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                       Autor: {active.autor}
                     </motion.p>
                   </div>
-                  <div className="flex gap-3">
-                     <button className="text-black border px-2 py-1 rounded-md flex items-center text-xl"><span><TiEdit/>
-                    </span> </button>
-                    <button className="text-black border px-2 py-1 rounded-md flex items-center text-xl"><span><MdOutlineDelete/>
-                    </span> </button>
-                  </div>
+                  
                  
                 </div>
                 <div className="pt-4 relative px-4">
@@ -174,12 +169,13 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                 </motion.p>
               </div>
             </div>
-            <motion.button
-              layoutId={`button-${equipo.autor}-${id}`}
-              className="px-4 py-2 text-sm rounded-full font-bold bg-gray-100 hover:bg-gray-300 hover:text-black text-black mt-4 md:mt-0"
-            >
-              Ver detalles
-            </motion.button>
+            <div className="flex justify-center items-center gap-4">
+       
+          
+               <EditEqupo id={equipo.id}/>
+            <DeleteEquipo id={equipo.id}/>
+          
+            </div>
            
           </motion.div>
         ))}
