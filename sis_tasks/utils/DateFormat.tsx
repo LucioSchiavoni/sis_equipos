@@ -22,7 +22,7 @@ const DateFormat = ({ item }: any) => {
         updateRelativeTime();
         const intervalId = setInterval(updateRelativeTime, 1000)
         return () => clearInterval(intervalId)
-    }, [item])
+    }, [item]);
 
   return (
         <div className=" ">
