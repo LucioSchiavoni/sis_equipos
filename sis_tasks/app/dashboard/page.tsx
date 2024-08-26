@@ -7,17 +7,14 @@ import {
 import { Button } from "@/components/ui/button"
 import {
       Card,
-      CardContent,
       CardDescription,
       CardFooter,
-      CardHeader,
       CardTitle,
     } from "@/components/ui/card"
 import {
       DropdownMenu,
       DropdownMenuCheckboxItem,
       DropdownMenuContent,
-      DropdownMenuItem,
       DropdownMenuLabel,
       DropdownMenuSeparator,
       DropdownMenuTrigger,
@@ -29,23 +26,22 @@ import {
 import EquiposTable from '../components/table/EquiposTable';
 import { BsPcDisplayHorizontal } from "react-icons/bs";
 import AplicacionesNombre from '../components/modal/AplicacionesNombre';
+// import { ChangePassword } from '../components/modal/ChangePassword';
 
 
 
 export default async function DashboardPage() {
 
-
-
-
-
   const session = await auth()
   const nameUser = session?.user?.name
+  // const userId = session?.user?.id
     const nameAvatar = nameUser?.substring(0,1)
 
   return (
 <>
         <div className="flex min-h-screen w-8/12 m-auto flex-col justify-center"> 
-          <div className="flex flex-col justify-center items-center ">
+          <div className="flex flex-col justify-center items-center mt-6 "> 
+              {/* <div className='mt-4 absolute right-28 top-2'> <ChangePassword id={userId || ""}/>  </div> */}
             <header className="sticky top-0  z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -58,11 +54,8 @@ export default async function DashboardPage() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
-                  
-                  <Link href={"/configuracion"} className='text-center px-3 mt-4  text-xl rounded-md pb-2 hover:bg-gray-200'>Configuracion</Link>
-               
-      
+                  <DropdownMenuLabel>{nameUser}</DropdownMenuLabel>
+                
                 </DropdownMenuContent>
               </DropdownMenu>
             </header>
@@ -84,7 +77,7 @@ export default async function DashboardPage() {
                 <div className="flex items-center">
 
                   <div className="ml-auto flex items-center gap-2">
-                    <DropdownMenu>
+                    {/* <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="outline" size="sm" className="h-10 gap-1">
                           <ListFilter className="h-3.5 w-3.5" />
@@ -104,7 +97,7 @@ export default async function DashboardPage() {
                           Archived
                         </DropdownMenuCheckboxItem>
                       </DropdownMenuContent>
-                    </DropdownMenu>
+                    </DropdownMenu> */}
                  
                     <AplicacionesNombre/>
                   </div>

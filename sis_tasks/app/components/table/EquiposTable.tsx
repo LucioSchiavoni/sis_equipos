@@ -1,20 +1,12 @@
 'use client';
 import { getEquipos } from '@/app/api/equipos/equipos-actions';
 import { useQuery } from '@tanstack/react-query';
-import { PlusCircle } from 'lucide-react';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Box, Center, Skeleton, Spinner, Stack } from '@chakra-ui/react'
+
 import {
   TabsContent,
 } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+
 import {
       Card,
       CardContent,
@@ -31,6 +23,7 @@ import {
 import { ExpandableCardDemo } from './EquipoItem';
 import Search from '@/app/components/search/Search'
 import { useSearchParams } from 'next/navigation';
+
 
 
 const EquiposTable = () => {
@@ -74,13 +67,22 @@ const EquiposTable = () => {
 </Card>
 </TabsContent>)
 
-      if (isLoading) return <div>Cargando...</div>;
+      if (isLoading) return (
+   
+          <div className='min-h-screen w-8/12 mt-24 m-auto p-8'>
+           
+            <Spinner/>
+          </div>
+      
+        
+     
+      )
   if (error) return <div>Error al cargar los equipos</div>;
 
 if(data)
   return (
     <TabsContent value="all">
-<Card x-chunk="dashboard-06-chunk-0" className='text-white flex flex-col border-neutral-700 w-auto m-auto mt-4 bg-neutral-800 bg-opacity-50'>
+<Card x-chunk="dashboard-06-chunk-0" className='text-white bg-gradient-to-r from-cyan-800 via-cyan-700 to-cyan-900  flex flex-col shadow-xl w-auto m-auto mt-4  bg-opacity-90'>
 
   <CardHeader className="gap-4">
  

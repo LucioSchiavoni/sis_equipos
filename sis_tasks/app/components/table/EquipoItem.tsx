@@ -89,7 +89,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                
                     <motion.h3
                       layoutId={`title-${active.pcName}-${id}`}
-                      className="font-bold text-neutral-700 dark:text-neutral-200"
+                      className="font-bold text-black dark:text-neutral-200"
                     >
                       {active.pcName}
                     </motion.h3>
@@ -160,7 +160,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
               <div className="">
                   <motion.p
                   layoutId={`description-${equipo.fecha}-${equipo.numSerie}-${id}`}
-                  className="text-gray-300 px-2 dark:text-white absolute right-72"
+                  className="text-gray-300 px-2 dark:text-white absolute right-40 3xl:right-80"
                 >
                   <DateFormat item={equipo.fecha}/>
                 </motion.p>

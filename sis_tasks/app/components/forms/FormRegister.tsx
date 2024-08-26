@@ -35,7 +35,7 @@ const FormRegister = () => {
 
   return (
 
-      <form onSubmit={handleForm} className='space-y-12 w-80 text-xl '>   
+      <form onSubmit={handleForm} className='space-y-12 w-80 text-xl border shadow-xl rounded-md p-4'>   
       
                <div>
           <label htmlFor="
@@ -53,11 +53,11 @@ const FormRegister = () => {
              
                <div>
           <label htmlFor="
-          ">Nombre de usuario</label>
+          ">Contraseña</label>
           
            <Input type='password' value={password} className='text-xl' onChange={(e) => setPassword(e.target.value)} />
         </div>
-    <button type='submit' className='px-3 py-1 rounded-md border'>Registrarse</button>
+    <button type='submit' className='px-3 py-1 flex justify-center rounded-md border font-semibold text-white bg-cyan-700 hover:bg-cyan-600 m-auto w-40 '>Registrarse</button>
 
    {error && <div className='text-red-500'>{error}</div>}
       </form>

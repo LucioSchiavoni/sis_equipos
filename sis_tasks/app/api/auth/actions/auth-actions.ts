@@ -3,6 +3,7 @@ import prisma from "@/app/lib/prisma";
 import bcrypt from 'bcryptjs'
 
 
+
 export const signInCredentials = async(username: string, password: string) => {
 
     if( !username || !password) return null;
@@ -10,7 +11,6 @@ export const signInCredentials = async(username: string, password: string) => {
     const user = await prisma.user.findUnique({where: {username}})
 
     if(!user){
-        // const dbUser = await createUser(username, password, username)
         console.log("Usuario no encontrado")
     }
     
@@ -43,18 +43,31 @@ export const createUser = async (username: string, password: string, name: strin
 }
 
 
-export const changePassword = async(password: string, id:string) => {
+export const changePassword = async (password: string, id: string) => {
     try {
-        const change = await prisma.user.update({
-            where:{
-                id: id
-            },
-            data:{
-                password: password
-            }
-        })
-        return {success: "Contraseña cambiada con exito"}
+      const user = await prisma.user.findUnique({
+        where: {
+          id: id,
+        },
+      });
+  
+      if (!user) {
+        return { error: "Usuario no encontrado." };
+      }
+  
+      const updatedUser = await prisma.user.update({
+        where: {
+          id: id,
+        },
+        data: {
+          password: password,
+        },
+      });
+  
+      return { success: "Contraseña cambiada con éxito" };
     } catch (error) {
-        console.log(error)
+      console.error("Error al cambiar la contraseña:", error);
+      return { error: "Hubo un error al cambiar la contraseña." };
     }
-}
+  };
+  

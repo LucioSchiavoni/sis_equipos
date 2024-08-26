@@ -1,72 +1,67 @@
+// auth.ts
+
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { PrismaClient } from "@prisma/client"
-import { Adapter } from "next-auth/adapters";
-import Credentials from "next-auth/providers/credentials"
-import { signInCredentials } from "../actions/auth-actions";
+import { PrismaClient } from "@prisma/client";
 import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { signInCredentials } from "../actions/auth-actions";
 import { signInSchema } from "@/app/lib/zod";
 import { ZodError } from "zod";
 
 const prisma = new PrismaClient();
 
-
 export const {handlers, signIn, signOut, auth} = NextAuth({
-    adapter: PrismaAdapter(prisma) as Adapter,
-    providers: [
-        Credentials({
-          name:"Credentials",
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
       credentials: {
-        username: { label: "Nombre de usuario", type: "text", placeholder: "nombre.apellido"},
-        password: { label: "Contraseña", type: "password", placeholder: "******"},
+        username: { label: "Nombre de usuario", type: "text", placeholder: "nombre.apellido" },
+        password: { label: "Contraseña", type: "password", placeholder: "******" },
       },
-      async authorize(credentials): Promise<any>  {
+      async authorize(credentials) {
         try {
-
-          let user = null
-        const {username, password} = await signInSchema.parseAsync(credentials)
-        user = await signInCredentials(username, password)
-
-        if (!user) {
-          throw new Error("User not found.")
-        }
         
-        return user
-        } catch (error) {
-          if(error instanceof ZodError){
-            return { msg: "Datos inválidos", status: "error" };
-            
-          }else{
-              return { msg: "Ocurrió algo inesperado", status: "error" };
+          let user = null;
+          const { username, password } = await signInSchema.parseAsync(credentials);
+          user = await signInCredentials(username, password);
+          
+          if (!user) {
+            throw new Error("User not found.")
           }
+          return user;
+        } catch (error) {
+          if (error instanceof ZodError) {
+            return null;
+          }
+          return null;
         }
       },
     }),
-    ],
-    
-    session:{
-        strategy: 'jwt'
+  ],
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "/login",
+  },
+  callbacks:{
+    async signIn({user, account, profile, credentials}){
+       
+        return true;
     },
-    pages:{
-      signIn: "/login"
+
+    async jwt({token, user, account, profile}){
+
+      return token; 
     },
-    
-    callbacks:{
-        async signIn({user, account, profile, credentials}){
-           
-            return true;
-        },
 
-        async jwt({token, user, account, profile}){
-    
-          return token; 
-        },
+    async session({session, token, user}) {
 
-        async session({session, token, user}) {
-  
-          return session;
-        },
-    }
-})
+      return session;
+    },
+}
+});
 
 
-export const {GET, POST} = handlers;
+export const { GET, POST } = handlers;

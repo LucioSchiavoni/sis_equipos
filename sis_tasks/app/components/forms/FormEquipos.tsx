@@ -81,7 +81,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 if(aplicaciones)
   return (
     <div className="flex justify-center items-center">
-        <form onSubmit={handleSubmit} className="border bg-neutral-800 border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-4/12">
+        <form onSubmit={handleSubmit} className="border bg-cyan-900 border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-3/12">
           <div className="space-y-2">
                 <label htmlFor="">Nombre de PC</label>
                 <Input placeholder="DGS-PC.." className="text-black focus:border focus:outline-none border-cyan-700" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
@@ -123,7 +123,7 @@ if(aplicaciones)
             } 
             </div>
             <div className="flex items-center justify-center">
-                <button className="hover:bg-cyan-800 py-1 w-64 text-xl  rounded-md  bg-neutral-900  " type="submit">Registrar</button>
+                <button className="hover:bg-gray-200 text-cyan-900 font-semibold py-1 w-64 text-xl  rounded-md  bg-white " type="submit">Registrar</button>
             </div>
           
         </form>

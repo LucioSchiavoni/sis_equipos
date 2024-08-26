@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
 export async function generatePDF(equipo: any) {
@@ -26,12 +27,14 @@ export async function generatePDF(equipo: any) {
     color: rgb(0, 0, 0),
   });
 
+  const fechaFormateada = format(new Date(equipo.fecha), 'yyyy-MM-dd');
 
   const data = [
     ["Nombre del PC", equipo.pcName],
     ["Número de Serie", equipo.numSerie],
     ["Unidad", equipo.unidad],
     ["Tecnico asignado", equipo.autor],
+    ["Fecha", fechaFormateada],
   ];
 
 
