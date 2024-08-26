@@ -44,28 +44,47 @@ export const createEquipo = async(data: any) => {
 }
 
 
-export const getEquipos = async(): Promise<any[]> => {
+export const getEquipos = async (query: string = ''): Promise<any[]> => {
     try {
         return await prisma.equipo.findMany({
-            include:{
+            where: {
+                OR: [
+                    {
+                        pcName: {
+                            contains: query,
+                            mode: 'insensitive',  
+                        },
+                    },
+                    {
+                        numSerie: {
+                            contains: query,
+                            mode: 'insensitive',
+                        },
+                    },
+                ],
+            },
+            orderBy:{
+                fecha: "desc"
+            },
+            include: {
                 aplicaciones: {
-                    select:{
+                    select: {
                         instalada: true,
-                        aplicacion:{
-                            select:{
-                                nombre:true
-                            }
-                        }
-                    }
-                }
-            }
+                        aplicacion: {
+                            select: {
+                                nombre: true,
+                            },
+                        },
+                    },
+                },
+            },
         });
-
     } catch (error) {
-        console.log(error)
-            throw error; 
+        console.log(error);
+        throw error;
     }
-}
+};
+
 
 
 export const deleteEquipo = async(id: number) => {

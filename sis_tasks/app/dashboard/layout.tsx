@@ -15,7 +15,7 @@ export default async function Layout({
   }
 
   return (
-    <div className="  bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
+    <div className="  bg-neutral-900 relative flex flex-col items-center justify-center antialiased">
       <nav className="">
           <Navbar/> 
       </nav>

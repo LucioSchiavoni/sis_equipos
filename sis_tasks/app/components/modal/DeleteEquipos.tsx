@@ -31,7 +31,7 @@ export const DeleteEquipo = ({id}: {id: number}) => {
     <>
 
       <Button mt={4} onClick={onOpen}>
-      <span className="text-xl"><MdOutlineDelete/></span>
+      <span className="text-2xl"><MdOutlineDelete/></span>
       </Button>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose} >
         <ModalOverlay />

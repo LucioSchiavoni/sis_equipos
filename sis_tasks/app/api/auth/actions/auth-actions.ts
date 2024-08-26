@@ -41,3 +41,20 @@ export const createUser = async (username: string, password: string, name: strin
     }
 
 }
+
+
+export const changePassword = async(password: string, id:string) => {
+    try {
+        const change = await prisma.user.update({
+            where:{
+                id: id
+            },
+            data:{
+                password: password
+            }
+        })
+        return {success: "Contraseña cambiada con exito"}
+    } catch (error) {
+        console.log(error)
+    }
+}

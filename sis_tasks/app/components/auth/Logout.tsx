@@ -9,7 +9,7 @@ const Logout = () => {
 
     if(status === 'loading'){
         return (
-            <button className="px-4 py-1 flex items-center space-x-4 rounded-md border text-white">Cargando...</button>
+            <button className="px-4 py-1 flex items-center space-x-4 rounded-md border text-white"><TbLogout/></button>
         )
     }
 

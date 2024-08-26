@@ -4,10 +4,10 @@
 import { getAplicaciones } from "@/app/api/aplicaciones/aplicaciones-actions"
 import { createEquipo } from "@/app/api/equipos/equipos-actions"
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useState } from "react"
 import { toast } from "react-toastify"
+import { useRouter } from "next/navigation";
 
 
 
@@ -19,6 +19,7 @@ const FormEquipos = () => {
   const [autor, setAutor] = useState("")
     const [selectedAplicaciones, setSelectedAplicaciones] = useState<{ id: number, instalada: boolean }[]>([])
 
+    const routes = useRouter();
 
     const { data: aplicaciones, isLoading, error } = useQuery<any[]>({
     queryKey: ['aplicaciones'],
@@ -66,6 +67,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     
     if (res?.success) {
       queryClient.invalidateQueries({queryKey: ['equipos']});
+      routes.push("/dashboard")
       toast.success(res.success);
     } else {
       toast.error(res?.error || 'Ocurrió un error al crear el equipo');
@@ -79,22 +81,22 @@ const handleSubmit = async (e: React.FormEvent) => {
 if(aplicaciones)
   return (
     <div className="flex justify-center items-center">
-        <form onSubmit={handleSubmit} className="border border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-4/12">
+        <form onSubmit={handleSubmit} className="border bg-neutral-800 border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-4/12">
           <div className="space-y-2">
                 <label htmlFor="">Nombre de PC</label>
-                <Input placeholder="DGS-PC.." className="text-black focus:border border-neutral-600" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
+                <Input placeholder="DGS-PC.." className="text-black focus:border focus:outline-none border-cyan-700" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
             </div>
             <div className="space-y-2">
                 <label htmlFor="">Numero de serie</label>
-                <Input placeholder="Serie.." value={numSerie} className="text-black focus:border border-neutral-600"  onChange={(e) => setNumSerie(e.target.value)} />
+                <Input placeholder="Serie.." value={numSerie} className="text-black focus:border  focus:outline-none focus:border-cyan-600 focus:ring-cyan-600"  onChange={(e) => setNumSerie(e.target.value)} />
             </div>
             <div className="space-y-2">
                 <label htmlFor="">Unidad</label>
-                <Input placeholder="Unidad.." value={unidad} className="text-black focus:border border-neutral-600"  onChange={(e) => setUnidad(e.target.value)} />
+                <Input placeholder="Unidad.." value={unidad} className="text-black focus:border border-cyan-700"  onChange={(e) => setUnidad(e.target.value)} />
             </div>
               <div className="space-y-2">
                 <label htmlFor="">Autor</label>
-                <Input placeholder="Autor.." value={autor}  className="text-black focus:border border-neutral-600" onChange={(e) => setAutor(e.target.value)} />
+                <Input placeholder="Autor.." value={autor}  className="text-black focus:border border-cyan-700" onChange={(e) => setAutor(e.target.value)} />
             </div>
     
 
@@ -121,7 +123,7 @@ if(aplicaciones)
             } 
             </div>
             <div className="flex items-center justify-center">
-                <button className="hover:bg-neutral-800 py-1 w-64 text-xl  rounded-md border border-neutral-800 " type="submit">Registrar</button>
+                <button className="hover:bg-cyan-800 py-1 w-64 text-xl  rounded-md  bg-neutral-900  " type="submit">Registrar</button>
             </div>
           
         </form>

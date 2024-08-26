@@ -1,10 +1,8 @@
+
 import Link from 'next/link';
 import { auth } from '../api/auth/[...nextauth]/route';
 import {
-      File,
       ListFilter,
-      PlusCircle,
-      Search,
     } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -24,19 +22,21 @@ import {
       DropdownMenuSeparator,
       DropdownMenuTrigger,
     } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 import {
     Tabs,
     TabsContent,
 } from "@/components/ui/tabs"
 import EquiposTable from '../components/table/EquiposTable';
-
 import { BsPcDisplayHorizontal } from "react-icons/bs";
 import AplicacionesNombre from '../components/modal/AplicacionesNombre';
 
 
 
 export default async function DashboardPage() {
+
+
+
+
 
   const session = await auth()
   const nameUser = session?.user?.name
@@ -59,9 +59,9 @@ export default async function DashboardPage() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>Configuracion</DropdownMenuItem>
-                  <DropdownMenuSeparator />
+                  
+                  <Link href={"/configuracion"} className='text-center px-3 mt-4  text-xl rounded-md pb-2 hover:bg-gray-200'>Configuracion</Link>
+               
       
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -105,19 +105,14 @@ export default async function DashboardPage() {
                         </DropdownMenuCheckboxItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
-                    <Button size="sm" variant="outline" className="h-10 gap-1">
-                      <File className="h-3.5 w-3.5" />
-                      <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                        Export CSV
-                      </span>
-                    </Button>
+                 
                     <AplicacionesNombre/>
                   </div>
                 </div>
-                <TabsContent value="all" >
+                <TabsContent value="all"  >
                      
                       
-                    <EquiposTable/>
+                    <EquiposTable />
 
 
                 </TabsContent>

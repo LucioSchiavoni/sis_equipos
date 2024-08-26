@@ -65,15 +65,14 @@ export const EditEqupo = ({id}: {id: number}) => {
                    <label htmlFor="" className="font-medium">Autor</label>
                 <Input value={autor} onChange={(e) => setAutor(e.target.value)}/> 
                 </div>
-          <ModalCloseButton />
+    <ModalCloseButton fontSize={"medium"}/>
           <div className="gap-4 flex justify-center items-center pt-4">
-            <button className="px-2 py-1 rounded-md border hover:bg-gray-100 w-36 font-medium" type="submit">Guardar cambios</button>
-            <button className="px-3 py-1 rounded-md border hover:bg-gray-100 w-28 font-medium"  onClick={onClose}>
-            Cancelar
-            </button>
-          </div>
+            <button className="px-2 py-2 rounded-md border bg-neutral-800 shadow-2xl hover:bg-cyan-600 text-white text-xl font-medium" type="submit">Guardar cambios</button>
+            </div>
           </form>
-          </div>
+         
+           </div>
+      
         </ModalContent>
       </Modal>
     </>
