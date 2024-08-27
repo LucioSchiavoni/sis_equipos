@@ -1,4 +1,5 @@
 
+version: '3.8'
 
 services:
   sis_tasksDB:
@@ -11,6 +12,27 @@ services:
       - sis_tasks_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - backend
+
+  
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs_app
+    env_file:
+      - .env
+    ports:
+      - "3005:3005"
+    depends_on:
+      - sis_tasksDB
+    networks:
+      - backend
 
 volumes:
   sis_tasks_data:
+
+networks:
+  backend:
+    driver: bridge
