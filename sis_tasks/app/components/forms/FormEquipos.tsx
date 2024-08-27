@@ -18,7 +18,7 @@ const FormEquipos = () => {
   const [unidad, setUnidad] = useState("")
   const [autor, setAutor] = useState("")
     const [selectedAplicaciones, setSelectedAplicaciones] = useState<{ id: number, instalada: boolean }[]>([])
-
+const queryClient = useQueryClient();
     const routes = useRouter();
 
     const { data: aplicaciones, isLoading, error } = useQuery<any[]>({
@@ -35,7 +35,7 @@ const FormEquipos = () => {
   if(error) return ( 
     <div>Error al cargar los datos...</div>
   )
- const queryClient = useQueryClient();
+
 
 const handleCheckboxChange = (aplicacionId: number) => {
   setSelectedAplicaciones(prev => {
@@ -81,7 +81,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 if(aplicaciones)
   return (
     <div className="flex justify-center items-center">
-        <form onSubmit={handleSubmit} className="border bg-cyan-900 border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-3/12">
+        <form onSubmit={handleSubmit} className="border bg-neutral-700 border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-3/12">
           <div className="space-y-2">
                 <label htmlFor="">Nombre de PC</label>
                 <Input placeholder="DGS-PC.." className="text-black focus:border focus:outline-none border-cyan-700" value={pcName}  onChange={(e) => setPcName(e.target.value)} />

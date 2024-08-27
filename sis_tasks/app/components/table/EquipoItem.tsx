@@ -156,14 +156,9 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
             className="p-4 flex flex-col md:flex-row justify-between items-center hover:bg-neutral-800 hover:bg-opacity-70 dark:hover:bg-neutral-800 rounded-xl cursor-pointer"
           >
             
-            <div className="flex gap-4 flex-col md:flex-row ">
+            <div className="flex items-start  md:flex-row ">
               <div className="">
-                  <motion.p
-                  layoutId={`description-${equipo.fecha}-${equipo.numSerie}-${id}`}
-                  className="text-gray-300 px-2 dark:text-white absolute right-40 3xl:right-80"
-                >
-                  <DateFormat item={equipo.fecha}/>
-                </motion.p>
+            
                 <motion.h3
                   layoutId={`title-${equipo.pcName}-${id}`}
                   className="font-medium  text-white dark:text-white text-center md:text-left"
@@ -189,13 +184,24 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                    <FaUserAlt/> {equipo.autor}
                 </motion.p>
               </div>
+   
             </div>
+            <div className="flex  justify-between items-center flex-col h-24 gap-5">
+   <div className="items-start">
+                      <motion.p
+                  layoutId={`description-${equipo.fecha}-${equipo.numSerie}-${id}`}
+                  className="text-gray-300 px-2  dark:text-white   3xl:right-80"
+                >
+                  <DateFormat item={equipo.fecha}/>
+                </motion.p>
+      </div>
+           
             <div className="flex justify-center items-center gap-4">
        
              <button className="mt-4 border px-3 hover:bg-gray-200 py-1 rounded-md bg-white text-black" onClick={() => handleExport(equipo)}> <span className="text-3xl"><BsFiletypePdf/></span></button>
                <EditEqupo id={equipo.id}/>
             <DeleteEquipo id={equipo.id}/>
-       
+        </div>
             </div>
            
           </motion.div>
