@@ -13,7 +13,7 @@ export default async function Home() {
 </div>
   
    <div className="flex flex-col gap-2 mb-4 ">
-    <Link className=" py-1 bg-neutral-800 text-white rounded-md text-2xl w-80 text-center hover:scale-110 transition-all " href={'/login'}>Login</Link>
+    <Link className=" py-1 bg-neutral-800 text-white rounded-md text-2xl w-80 text-center hover:scale-110 transition-all " href={'/login'}>Inicia sesión</Link>
       <Link className="px-3 py-1  bg-neutral-800 text-white rounded-md text-xl w-80 text-center  hover:scale-110 transition-all " href={'/register'}>Registro</Link>
    </div>
     

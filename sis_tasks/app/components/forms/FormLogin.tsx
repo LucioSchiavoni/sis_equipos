@@ -51,7 +51,7 @@ const LoginForm = () => {
 
       <form onSubmit={handleSubmit} className="space-y-12 ">
             <div className="space-y-2">
-              <label className="font-semibold">Username</label>
+              <label className="font-semibold">Nombre de usuario</label>
          
                 <Input placeholder="nombre.apellido" className="text-xl text-black" value={username} onChange={(e) => setUsername(e.target.value)} />
        
@@ -59,7 +59,7 @@ const LoginForm = () => {
             
             </div>
                <div className="font-semibold space-y-4">
-              <label>Password</label>
+              <label>Contraseña</label>
            
                 <Input placeholder="*******" type="password" className="text-xl text-black" value={password} onChange={(e) => setPassword(e.target.value)} />
               
