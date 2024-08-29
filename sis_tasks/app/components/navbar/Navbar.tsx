@@ -8,7 +8,7 @@ const Navbar = async() => {
 
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col bg-cyan-800  border-r border-cyan-400 bg-background sm:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col rounded-md bg-cyan-800  border-cyan-400 bg-background sm:flex">
     <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
       <Link
         href={'/dashboard'}

@@ -54,7 +54,7 @@ export default async function DashboardPage() {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>{nameUser}</DropdownMenuLabel>
+                  <DropdownMenuLabel className='capitalize'>{nameUser}</DropdownMenuLabel>
                 
                 </DropdownMenuContent>
               </DropdownMenu>

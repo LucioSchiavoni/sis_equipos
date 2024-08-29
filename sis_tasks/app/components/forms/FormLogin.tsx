@@ -69,7 +69,7 @@ const LoginForm = () => {
             </div>
     
     
-        <Button type="submit" className="w-52 text-xl bg-cyan-900 border border-white flex justify-center ml-4">Ingresar</Button>
+        <Button type="submit" className="w-52 text-xl bg-cyan-900 shadow-xl border-white flex justify-center ml-4">Ingresar</Button>
       </form>
 </CardItem>
 </CardBody>

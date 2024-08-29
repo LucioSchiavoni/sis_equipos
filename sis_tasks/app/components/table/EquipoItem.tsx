@@ -79,7 +79,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
             <motion.div
               layoutId={`card-${active.pcName}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white  dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col  dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             > 
               <div className="">
         
@@ -147,7 +147,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="w-[600px] 3xl:w-[1600px] 2xl:w-[1600px]  xl:w-[900px] gap-4">
+      <ul className="w-[600px] 3xl:w-[1600px] 2xl:w-[1600px]  xl:w-[900px] gap-4 glass">
         {equipos.map((equipo) => (
           <motion.div
             layoutId={`card-${equipo.pcName}-${id}`}

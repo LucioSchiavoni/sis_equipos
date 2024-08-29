@@ -26,7 +26,7 @@ export const createUser = async (username: string, password: string, name: strin
 
       const existUser = await prisma.user.findUnique({where: {username}})
              if(existUser){
-                throw new Error("Usuario ya existe")
+                return null
              }
         const user = await prisma.user.create({
         data:{
