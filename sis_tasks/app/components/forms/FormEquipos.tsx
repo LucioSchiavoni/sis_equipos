@@ -81,21 +81,21 @@ const handleSubmit = async (e: React.FormEvent) => {
 if(aplicaciones)
   return (
     <div className="flex justify-center items-center">
-        <form onSubmit={handleSubmit} className="border bg-neutral-700 border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-3/12">
+        <form onSubmit={handleSubmit} className="border glass border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-3/12">
           <div className="space-y-2">
-                <label htmlFor="">Nombre de PC</label>
+                <label htmlFor="" className="font-medium text-xl">Nombre de PC</label>
                 <Input placeholder="DGS-PC.." className="text-black focus:border focus:outline-none border-cyan-700" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
             </div>
             <div className="space-y-2">
-                <label htmlFor="">Numero de serie</label>
+                <label htmlFor="" className="font-medium text-xl">Numero de serie</label>
                 <Input placeholder="Serie.." value={numSerie} className="text-black focus:border  focus:outline-none focus:border-cyan-600 focus:ring-cyan-600"  onChange={(e) => setNumSerie(e.target.value)} />
             </div>
             <div className="space-y-2">
-                <label htmlFor="">Unidad</label>
+                <label htmlFor="" className="font-medium text-xl">Unidad</label>
                 <Input placeholder="Unidad.." value={unidad} className="text-black focus:border border-cyan-700"  onChange={(e) => setUnidad(e.target.value)} />
             </div>
               <div className="space-y-2">
-                <label htmlFor="">Autor</label>
+                <label htmlFor="" className="font-medium text-xl">Autor</label>
                 <Input placeholder="Autor.." value={autor}  className="text-black focus:border border-cyan-700" onChange={(e) => setAutor(e.target.value)} />
             </div>
     

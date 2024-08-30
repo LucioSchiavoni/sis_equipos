@@ -11,6 +11,7 @@ import { BsFiletypePdf } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import { BsHouseFill } from "react-icons/bs";
 import DateFormat from "@/utils/DateFormat";
+import { IoMdCheckbox } from "react-icons/io";
 
 export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
   const [active, setActive] = useState<any | null>(null);
@@ -55,7 +56,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
       </AnimatePresence>
       <AnimatePresence>
         {active ? (
-          <div className="fixed inset-0 grid place-items-center  z-[100]">
+          <div className="fixed inset-0 grid place-items-center   z-[100]">
             <motion.button
               key={`button-${active.pcName}-${id}`}
               layout
@@ -79,7 +80,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
             <motion.div
               layoutId={`card-${active.pcName}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col  dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col glass bg-white rounded-xl  overflow-hidden"
             > 
               <div className="">
         
@@ -134,7 +135,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                     active.aplicaciones.map((item: any, index: number) => (
                     <div key={index} className="">
                     {item.instalada ? (
-                    <p className="font-medium">{item.aplicacion.nombre}</p>
+                    <p className="font-medium flex gap-2 items-center"><span><IoMdCheckbox/></span> {item.aplicacion.nombre}</p>
                         ) : null}
                     </div>
                     ))
@@ -147,7 +148,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="w-[600px] 3xl:w-[1600px] 2xl:w-[1600px]  xl:w-[900px] gap-4 glass">
+      <ul className="w-[600px] 3xl:w-[1600px] 2xl:w-[1600px] rounded-xl  xl:w-[900px] gap-4  bg-cyan-800">
         {equipos.map((equipo) => (
           <motion.div
             layoutId={`card-${equipo.pcName}-${id}`}

@@ -82,7 +82,7 @@ const EquiposTable = () => {
 if(data)
   return (
     <TabsContent value="all">
-<Card x-chunk="dashboard-06-chunk-0" className='text-white bg-gradient-to-r glass from-cyan-800 via-cyan-700 to-cyan-900  flex flex-col shadow-xl w-auto m-auto mt-4  '>
+<Card x-chunk="dashboard-06-chunk-0" className='text-white bg-gradient-to-r glass bg-transparent flex flex-col shadow-xl w-auto m-auto mt-4  '>
 
   <CardHeader className="gap-4">
  
