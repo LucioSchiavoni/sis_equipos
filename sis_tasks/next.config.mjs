@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: "standalone",
+    output: "node .next/standalone/server.js",
     typescript:{
         ignoreBuildErrors: true,
     }
