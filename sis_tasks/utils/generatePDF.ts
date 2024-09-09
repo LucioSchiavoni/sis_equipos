@@ -16,12 +16,26 @@ export async function generatePDF(equipo: any) {
   const cellHeight = 25;
   const cellWidth = 200;
 
-  const title = "Datos del Equipo";
+  const logoPdf = "https://upload.wikimedia.org/wikipedia/commons/d/de/Logo_oficial_del_Ministerio_de_Educaci%C3%B3n_y_Cultura.png"
+  const imageBytes = await fetch(logoPdf).then(res => res.arrayBuffer());
+  const image = await pdfDoc.embedPng(imageBytes);
+  const imageWidth = 150;
+  const imageHeight = (image.height / image.width) * imageWidth;
+
+  const imageX = (width - imageWidth) / 2;
+  page.drawImage(image, {
+    x: imageX,
+    y: height  - 80,
+    width: imageWidth,
+    height: imageHeight,
+  });
+
+  const title = "Guía para configuración de PC-MEC y unidades ejecutoras";
   const titleWidth = font.widthOfTextAtSize(title, titleSize);
   const titleX = (width - titleWidth) / 2;
   page.drawText(title, {
     x: titleX,
-    y: height - 60,
+    y: height - imageHeight - 50,
     size: titleSize,
     font,
     color: rgb(0, 0, 0),

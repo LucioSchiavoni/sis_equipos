@@ -44,8 +44,9 @@ export const createEquipo = async(data: any) => {
 }
 
 
-export const getEquipos = async (query: string = ''): Promise<any[]> => {
+export const getEquipos = async (query: string = '', page: number = 1, limit: number = 5): Promise<any[]> => {
     try {
+        const offset = (page - 1)* limit;
         return await prisma.equipo.findMany({
             where: {
                 OR: [
@@ -63,6 +64,8 @@ export const getEquipos = async (query: string = ''): Promise<any[]> => {
                     },
                 ],
             },
+            skip: offset,
+            take: limit,
             orderBy:{
                 fecha: "desc"
             },
@@ -84,6 +87,8 @@ export const getEquipos = async (query: string = ''): Promise<any[]> => {
         throw error;
     }
 };
+
+
 
 
 

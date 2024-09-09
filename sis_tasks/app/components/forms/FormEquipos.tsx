@@ -7,7 +7,10 @@ import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { Input } from "@/components/ui/input";
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import Search from "../search/Search";
+import Layout from "@/app/dashboard/layout";
+import { Spinner } from "@chakra-ui/react";
 
 
 
@@ -28,7 +31,12 @@ const queryClient = useQueryClient();
 
   
   if(isLoading) return ( 
-    <div>Cargando...</div>
+    <div className="flex items-center justify-center">
+      <span className="mt-24">
+         <Spinner/>
+      </span>
+     
+    </div>
   )
 
   
@@ -84,19 +92,19 @@ if(aplicaciones)
         <form onSubmit={handleSubmit} className="border glass border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-3/12">
           <div className="space-y-2">
                 <label htmlFor="" className="font-medium text-xl">Nombre de PC</label>
-                <Input placeholder="DGS-PC.." className="text-black focus:border focus:outline-none border-cyan-700" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
+                <Input required placeholder="DGS-PC.." className="text-black focus:border focus:outline-none border-cyan-700" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
             </div>
             <div className="space-y-2">
                 <label htmlFor="" className="font-medium text-xl">Numero de serie</label>
-                <Input placeholder="Serie.." value={numSerie} className="text-black focus:border  focus:outline-none focus:border-cyan-600 focus:ring-cyan-600"  onChange={(e) => setNumSerie(e.target.value)} />
+                <Input required placeholder="Serie.." value={numSerie} className="text-black focus:border  focus:outline-none focus:border-cyan-600 focus:ring-cyan-600"  onChange={(e) => setNumSerie(e.target.value)} />
             </div>
             <div className="space-y-2">
                 <label htmlFor="" className="font-medium text-xl">Unidad</label>
-                <Input placeholder="Unidad.." value={unidad} className="text-black focus:border border-cyan-700"  onChange={(e) => setUnidad(e.target.value)} />
+                <Input required placeholder="Unidad.." value={unidad} className="text-black focus:border border-cyan-700"  onChange={(e) => setUnidad(e.target.value)} />
             </div>
               <div className="space-y-2">
                 <label htmlFor="" className="font-medium text-xl">Autor</label>
-                <Input placeholder="Autor.." value={autor}  className="text-black focus:border border-cyan-700" onChange={(e) => setAutor(e.target.value)} />
+                <Input required placeholder="Autor.." value={autor}  className="text-black focus:border border-cyan-700" onChange={(e) => setAutor(e.target.value)} />
             </div>
     
 

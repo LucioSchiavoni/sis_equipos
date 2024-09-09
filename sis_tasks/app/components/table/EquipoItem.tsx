@@ -87,7 +87,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                 <div className="flex justify-between items-start p-8 ">
                    
                   <div>
-               
+
                     <motion.h3
                       layoutId={`title-${active.pcName}-${id}`}
                       className="font-bold text-black dark:text-neutral-200"
@@ -113,8 +113,6 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                     <FaUserAlt/>Tecnico asignado: {active.autor}
                     </motion.p>
                   </div>
-                  
-                 
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -122,14 +120,13 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-black text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start  overflow-auto dark:text-black"
+                    className="text-black text-xs md:text-sm lg:text-base pb-10 flex flex-col items-start  overflow-auto dark:text-black"
                   >
                 
                         <h3 className="text-xl font-medium mb-3">Aplicaiones instaladas</h3>
                     
-                    
+                    <div className="grid grid-cols-2 gap-2">
               {
-          
                 active.aplicaciones.length > 0 ? (
                   
                     active.aplicaciones.map((item: any, index: number) => (
@@ -139,8 +136,9 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                         ) : null}
                     </div>
                     ))
-                ) : null
+                ) : <p>Sin aplicaciones instaladas</p>
                   }
+                  </div>
                   </motion.div>
                 </div>
               </div>
@@ -148,7 +146,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
           </div>
         ) : null}
       </AnimatePresence>
-      <ul className="w-[600px] 3xl:w-[1600px] 2xl:w-[1600px] rounded-xl  xl:w-[900px] gap-4  bg-cyan-800">
+      <ul className="w-[600px] 3xl:w-[1600px] 2xl:w-[1600px] rounded-xl xl:w-[900px] gap-4 bg-cyan-800">
         {equipos.map((equipo) => (
           <motion.div
             layoutId={`card-${equipo.pcName}-${id}`}

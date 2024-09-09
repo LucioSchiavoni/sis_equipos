@@ -14,7 +14,7 @@ const AplicacionesNombre = () => {
     <>    
      <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="bg-cyan-700 text-white hover:bg-cyan-600 hover:text-white">Agregar programa</Button>
+        <Button  className="bg-cyan-700 text-white hover:bg-cyan-600 hover:text-white">Agregar programa</Button>
       </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] h-52 text-4xl">
         <DialogHeader>
