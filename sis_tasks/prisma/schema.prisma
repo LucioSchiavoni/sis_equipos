@@ -45,7 +45,7 @@ model EquipoAplicacion {
 model User {
   id            String          @id @default(uuid())
   name          String?
-  rol String[] @default(["user"])
+  rol Rol @default(USER)
   isActive Boolean @default(true)
   username String?      @unique
   password String?
@@ -59,6 +59,11 @@ model User {
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+enum Rol {
+  USER
+  ADMIN
 }
 
 

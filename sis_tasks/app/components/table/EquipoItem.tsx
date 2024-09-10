@@ -8,10 +8,12 @@ import { EditEqupo } from "../modal/EditEqupo";
 import { downloadPDF, generatePDF } from "@/utils/generatePDF";
 
 import { BsFiletypePdf } from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
+import { FaCheckSquare, FaUserAlt } from "react-icons/fa";
 import { BsHouseFill } from "react-icons/bs";
 import DateFormat from "@/utils/DateFormat";
-import { IoMdCheckbox } from "react-icons/io";
+import AplicacionesList from "../modal/AplicacionesList";
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
+
 
 export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
   const [active, setActive] = useState<any | null>(null);
@@ -21,8 +23,10 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
   const handleExport = async (equipo: any) => {
     const pdfBytes = await generatePDF(equipo);
     downloadPDF(pdfBytes, `Equipo-${equipo.pcName}.pdf`);
-  };
+  };  
 
+
+ 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -56,7 +60,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
       </AnimatePresence>
       <AnimatePresence>
         {active ? (
-          <div className="fixed inset-0 grid place-items-center   z-[100]">
+          <div className="fixed inset-0 grid place-items-center  z-[100]">
             <motion.button
               key={`button-${active.pcName}-${id}`}
               layout
@@ -84,13 +88,13 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
             > 
               <div className="">
         
-                <div className="flex justify-between items-start p-8 ">
+                <div className="flex justify-between items-start p-6 ">
                    
                   <div>
 
                     <motion.h3
                       layoutId={`title-${active.pcName}-${id}`}
-                      className="font-bold text-black dark:text-neutral-200"
+                      className="font-bold uppercase text-black dark:text-neutral-200"
                     >
                       {active.pcName}
                     </motion.h3>
@@ -114,31 +118,35 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
                     </motion.p>
                   </div>
                 </div>
-                <div className="pt-4 relative px-4">
+                <div className="relative px-4">
                   <motion.div
                     layout
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-black text-xs md:text-sm lg:text-base pb-10 flex flex-col items-start  overflow-auto dark:text-black"
+                    className="text-black text-xs md:text-sm lg:text-base pb-2 flex flex-col items-start  overflow-auto dark:text-black"
                   >
-                
-                        <h3 className="text-xl font-medium mb-3">Aplicaiones instaladas</h3>
-                    
-                    <div className="grid grid-cols-2 gap-2">
+               
+                               <h2 className="text-xl text-center font-semibold mb-2">Aplicaciones instaladas</h2>
+             
+       
+            <ScrollShadow offset={100} orientation="horizontal" className="w-[450px] h-[200px] ">
               {
                 active.aplicaciones.length > 0 ? (
-                  
-                    active.aplicaciones.map((item: any, index: number) => (
-                    <div key={index} className="">
-                    {item.instalada ? (
-                    <p className="font-medium flex gap-2 items-center"><span><IoMdCheckbox/></span> {item.aplicacion.nombre}</p>
-                        ) : null}
-                    </div>
+                    active.aplicaciones.map((item: any,index: any) => (
+                      <div className="flex gap-2 text-xl  items-center"><span><FaCheckSquare/></span>{item.aplicacion.nombre}</div>
+                   
+                    
                     ))
-                ) : <p>Sin aplicaciones instaladas</p>
+                
+                  
+               ) : <p>Sin aplicaciones instaladas</p>
                   }
-                  </div>
+                 </ScrollShadow>
+                 <span className="mt-2">
+                    <AplicacionesList data={active.aplicaciones} />
+                 </span>
+               
                   </motion.div>
                 </div>
               </div>
@@ -160,7 +168,7 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
             
                 <motion.h3
                   layoutId={`title-${equipo.pcName}-${id}`}
-                  className="font-medium  text-white dark:text-white text-center md:text-left"
+                  className="font-medium  uppercase text-white dark:text-white text-center md:text-left"
                 >
                   {equipo.pcName}
                 </motion.h3>
@@ -185,21 +193,22 @@ export function ExpandableCardDemo({ equipos }: { equipos: any[] }) {
               </div>
    
             </div>
-            <div className="flex  justify-between items-center flex-col h-24 gap-5">
-   <div className="items-start">
+            <div className="flex   flex-col h-24 gap-5">
+   <div className="items-end">
                       <motion.p
                   layoutId={`description-${equipo.fecha}-${equipo.numSerie}-${id}`}
-                  className="text-gray-300 px-2  dark:text-white   3xl:right-80"
+                  className="text-gray-300 px-2 dark:text-white   3xl:right-80"
                 >
                   <DateFormat item={equipo.fecha}/>
                 </motion.p>
       </div>
            
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex justify-end items-end gap-4">
        
              <button className="mt-4 border px-3 hover:bg-gray-200 py-1 rounded-md bg-white text-black" onClick={() => handleExport(equipo)}> <span className="text-3xl"><BsFiletypePdf/></span></button>
                <EditEqupo id={equipo.id}/>
-            <DeleteEquipo id={equipo.id}/>
+
+            {/* <DeleteEquipo id={equipo.id}/> */}
         </div>
             </div>
            

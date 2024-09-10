@@ -54,13 +54,15 @@ export const changePassword = async (password: string, id: string) => {
       if (!user) {
         return { error: "Usuario no encontrado." };
       }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
   
       const updatedUser = await prisma.user.update({
         where: {
           id: id,
         },
         data: {
-          password: password,
+          password: hashedPassword,
         },
       });
   

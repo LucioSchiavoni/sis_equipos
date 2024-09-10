@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import { SparklesCore } from "@/components/ui/sparkles";
+import Image from "next/image";
 
 export default async function Home() {
 
@@ -9,6 +10,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden ">
 <div className="">
+  <Image width={400} height={400} src="/isologo-blanco.png" alt="logo" className="m-auto"/>
 <h1 className="relative z-10 text-lg md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">Registro de equipos</h1>
 </div>
   

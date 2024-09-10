@@ -26,7 +26,7 @@ import {
 import EquiposTable from '../components/table/EquiposTable';
 import { BsPcDisplayHorizontal } from "react-icons/bs";
 import AplicacionesNombre from '../components/modal/AplicacionesNombre';
-// import { ChangePassword } from '../components/modal/ChangePassword';
+
 
 
 
@@ -34,14 +34,14 @@ export default async function DashboardPage() {
 
   const session = await auth()
   const nameUser = session?.user?.name
-  // const userId = session?.user?.id
     const nameAvatar = nameUser?.substring(0,1)
+    
 
   return (
 <>
         <div className="flex min-h-screen w-8/12 m-auto flex-col justify-center"> 
           <div className="flex flex-col justify-center items-center mt-6 "> 
-              {/* <div className='mt-4 absolute right-28 top-2'> <ChangePassword id={userId || ""}/>  </div> */}
+          
             <header className="sticky top-0  z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>

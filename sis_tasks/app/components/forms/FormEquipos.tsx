@@ -7,9 +7,8 @@ import { useQuery, useQueryClient } from "@tanstack/react-query"
 import { Input } from "@/components/ui/input";
 import { useState } from "react"
 import { toast } from "react-toastify"
-import { useRouter, useSearchParams } from "next/navigation";
-import Search from "../search/Search";
-import Layout from "@/app/dashboard/layout";
+import { useRouter } from "next/navigation";
+import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { Spinner } from "@chakra-ui/react";
 
 
@@ -112,7 +111,7 @@ if(aplicaciones)
             {
               !aplicaciones || aplicaciones.length === 0 ? <div>No hay aplicaciones disponibles</div> : null
             }
-            <div className="grid grid-cols-2  gap-2">
+            <ScrollShadow offset={100} orientation="horizontal" className="w-[400px] h-[300px]">
 
           
             {
@@ -129,7 +128,7 @@ if(aplicaciones)
                 </div>
               ))
             } 
-            </div>
+            </ScrollShadow>
             <div className="flex items-center justify-center">
                 <button className="hover:bg-gray-200 text-cyan-900 font-semibold py-1 w-64 text-xl  rounded-md  bg-white " type="submit">Registrar</button>
             </div>

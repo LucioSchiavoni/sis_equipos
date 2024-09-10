@@ -10,6 +10,7 @@ import { Inter as FontSans } from "next/font/google"
 import { cn } from "@/lib/utils"
 import ReactQueryProvider from '@/providers/ReactQueryProvider';
 import { ChakraProvider } from '@chakra-ui/react'
+import {NextUIProvider} from '@nextui-org/react'
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -33,9 +34,11 @@ export default function RootLayout({
       <body className={cn("min-h-screen bg-background font-sans antialiased", fontSans.variable)}>
         <ReactQueryProvider >
         <SessionProvider>
+          <NextUIProvider>
           <ChakraProvider>
           {children}
           </ChakraProvider>
+          </NextUIProvider>
         </SessionProvider> 
       </ReactQueryProvider>
         <ToastContainer/>
