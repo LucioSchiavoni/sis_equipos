@@ -10,19 +10,37 @@ export const createEquipo = async(data: any) => {
 
   const { pcName, numSerie, unidad, autor, aplicaciones } = data;
     try {
-    const existPcName = await prisma.equipo.findFirst({where:{ pcName: pcName }})
-
+        const lastPcName = await prisma.equipo.findFirst({
+            where: {
+              pcName: {
+                startsWith: pcName, 
+              },
+            },
+            orderBy: {
+              pcName: 'desc', // Ordenar por pcName en orden descendente para obtener el más alto
+            },
+          });
+        
     const existNumSerie = await prisma.equipo.findFirst({where:{numSerie:numSerie}})
-
-    if(existPcName){
-        return {error:"Este nombre de PC ya esta registrado"}
-    }else if(existNumSerie){
+     
+    let generateNum = "001";
+    
+      if (lastPcName) {
+        const match = lastPcName.pcName.match(/-(\d{3})$/); 
+        if (match) {
+          const lastNum = parseInt(match[1], 10); 
+          generateNum = (lastNum + 1).toString().padStart(3, '0'); 
+        }
+      }
+    if(existNumSerie){
         return{error :"Este numero de serie ya esta registrado"}
     }
     
+    const pcNameConcat = `${pcName}-${generateNum}`;
+
         const equipo = await prisma.equipo.create({
         data: {
-          pcName,
+        pcName: pcNameConcat,
           numSerie,
           fecha: new Date().toISOString(),
           unidad,

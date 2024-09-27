@@ -1,0 +1,310 @@
+[
+  {
+    "Nombre": "Sistemas",
+    "Nomenclatura": "SIS"
+  },
+  {
+    "Nombre": "Obras y Servicios",
+    "Nomenclatura": "OYS"
+  },
+  {
+    "Nombre": "Asuntos Constitucionales",
+    "Nomenclatura": "ASCL"
+  },
+  {
+    "Nombre": "Asesoria Letrada",
+    "Nomenclatura": "ASL"
+  },
+  {
+    "Nombre": "Ciudadania Digital",
+    "Nomenclatura": "CDIG"
+  },
+  {
+    "Nombre": "Cooperacion y Proyectos",
+    "Nomenclatura": "CIP"
+  },
+  {
+    "Nombre": "Comunicaciones",
+    "Nomenclatura": "COM"
+  },
+  {
+    "Nombre": "Direccion General",
+    "Nomenclatura": "DIR"
+  },
+  {
+    "Nombre": "Gestion Financiero",
+    "Nomenclatura": "GFIN"
+  },
+  {
+    "Nombre": "Juridico Notarial",
+    "Nomenclatura": "JNOT"
+  },
+  {
+    "Nombre": "Recursos Humanos",
+    "Nomenclatura": "RRHH"
+  },
+  {
+    "Nombre": "Subsecretaria",
+    "Nomenclatura": "SUB"
+  },
+  {
+    "Nombre": "Sistemas Prestamo",
+    "Nomenclatura": "SISP"
+  },
+  {
+    "Nombre": "Gestion Documental",
+    "Nomenclatura": "GDOC"
+  },
+  {
+    "Nombre": "Tribunal de Cuentas",
+    "Nomenclatura": "TRIB"
+  },
+  {
+    "Nombre": "Financiero Contable",
+    "Nomenclatura": "FCON"
+  },
+  {
+    "Nombre": "Centro de Info",
+    "Nomenclatura": "CIOP"
+  },
+  {
+    "Nombre": "Servicio Medico",
+    "Nomenclatura": "RRHH"
+  },
+  {
+    "Nombre": "Liquidacion de Haberes",
+    "Nomenclatura": "RRHH"
+  },
+  {
+    "Nombre": "Autoridad Central",
+    "Nomenclatura": "AUTC"
+  },
+  {
+    "Nombre": "Registro de Instituciones Culturales y de Enseñanza",
+    "Nomenclatura": "REG"
+  },
+  {
+    "Nombre": "Desapacho Gerencial (sistemas)",
+    "Nomenclatura": "SIS"
+  },
+  {
+    "Nombre": "Clima laboral",
+    "Nomenclatura": "RRHH"
+  },
+  {
+    "Nombre": "Ministro",
+    "Nomenclatura": "MIN"
+  },
+  {
+    "Nombre": "Comunicaciones (educacion)",
+    "Nomenclatura": "COM"
+  },
+  {
+    "Nombre": "Derechos Humanos",
+    "Nomenclatura": "DDHH"
+  },
+  {
+    "Nombre": "Educacion Superior",
+    "Nomenclatura": "SUP"
+  },
+  {
+    "Nombre": "Educacion No Formal",
+    "Nomenclatura": "ENF"
+  },
+  {
+    "Nombre": "Financiero",
+    "Nomenclatura": "FIN"
+  },
+  {
+    "Nombre": "Cultura Cientifica",
+    "Nomenclatura": "CIEN"
+  },
+  {
+    "Nombre": "Becas",
+    "Nomenclatura": "BEC"
+  },
+  {
+    "Nombre": "Compras",
+    "Nomenclatura": "CMP"
+  },
+  {
+    "Nombre": "Contaduría Central",
+    "Nomenclatura": "CONT"
+  },
+  {
+    "Nombre": "Sistema de Cuidados",
+    "Nomenclatura": "SNIC"
+  },
+  {
+    "Nombre": "Administración",
+    "Nomenclatura": "ADM"
+  },
+  {
+    "Nombre": "Secretaria DNE",
+    "Nomenclatura": "SEC"
+  },
+  {
+    "Nombre": "Procuradoria",
+    "Nomenclatura": "PRO"
+  },
+  {
+    "Nombre": "Programa de formación en educación",
+    "Nomenclatura": "PFE"
+  },
+  {
+    "Nombre": "Fiscalia de Gobierno",
+    "Nomenclatura": "FIS"
+  },
+  {
+    "Nombre": "Investigación y estadísticas",
+    "Nomenclatura": "IES"
+  },
+  {
+    "Nombre": "Registro y control",
+    "Nomenclatura": "RRHH"
+  },
+  {
+    "Nombre": "Innovación Educativa",
+    "Nomenclatura": "INO"
+  },
+  {
+    "Nombre": "Ajedrez",
+    "Nomenclatura": "AJE"
+  },
+  {
+    "Nombre": "Ambiental",
+    "Nomenclatura": "AMB"
+  },
+  {
+    "Nombre": "Arquitectura",
+    "Nomenclatura": "ARQ"
+  },
+  {
+    "Nombre": "Arte",
+    "Nomenclatura": "ART"
+  },
+  {
+    "Nombre": "Liquidación de haberes (EDU)",
+    "Nomenclatura": "RRHH"
+  },
+  {
+    "Nombre": "Contratos",
+    "Nomenclatura": "CON"
+  },
+  {
+    "Nombre": "COOPERACIÓN",
+    "Nomenclatura": "COOP"
+  },
+  {
+    "Nombre": "DDHH",
+    "Nomenclatura": "DDHH"
+  },
+  {
+    "Nombre": "DDP",
+    "Nomenclatura": "DDP"
+  },
+  {
+    "Nombre": "Dirección asesor comisión",
+    "Nomenclatura": "DAC"
+  },
+  {
+    "Nombre": "Dirección asesor comisión jurídico",
+    "Nomenclatura": "DACJ"
+  },
+  {
+    "Nombre": "Enfermeria",
+    "Nomenclatura": "ENF"
+  },
+  {
+    "Nombre": "Genero",
+    "Nomenclatura": "GEN"
+  },
+  {
+    "Nombre": "INCLUSIVA",
+    "Nomenclatura": "INC"
+  },
+  {
+    "Nombre": "Migrantes",
+    "Nomenclatura": "MIG"
+  },
+  {
+    "Nombre": "PAS",
+    "Nomenclatura": "PAS"
+  },
+  {
+    "Nombre": "Plan nacional de carceles",
+    "Nomenclatura": "PNC"
+  },
+  {
+    "Nombre": "Programa Nacional de Educación y Trabajo",
+    "Nomenclatura": "PNET"
+  },
+  {
+    "Nombre": "PNL",
+    "Nomenclatura": "PNL"
+  },
+  {
+    "Nombre": "Proy. coordinacion laboral cecap",
+    "Nomenclatura": "CECAP"
+  },
+  {
+    "Nombre": "Salud",
+    "Nomenclatura": "SAL"
+  },
+  {
+    "Nombre": "TICS",
+    "Nomenclatura": "TICS"
+  },
+  {
+    "Nombre": "Estadistica",
+    "Nomenclatura": "IES"
+  },
+  {
+    "Nombre": "Secretaria del Ministro",
+    "Nomenclatura": "SECM"
+  },
+  {
+    "Nombre": "Control Presupuestario y Financiero",
+    "Nomenclatura": "CPF"
+  },
+  {
+    "Nombre": "Sistemas Magallanes",
+    "Nomenclatura": "SISM"
+  },
+  {
+    "Nombre": "Casa Magallanes Planta baja",
+    "Nomenclatura": "MPB"
+  },
+  {
+    "Nombre": "Casa Magallanes planta alta",
+    "Nomenclatura": "MPA"
+  },
+  {
+    "Nombre": "Dirección",
+    "Nomenclatura": "DIR"
+  },
+  {
+    "Nombre": "Gestion humana",
+    "Nomenclatura": "RRHH"
+  },
+  {
+    "Nombre": "Asesores",
+    "Nomenclatura": "ASE"
+  },
+  {
+    "Nombre": "Formación Docente",
+    "Nomenclatura": "FOD"
+  },
+  {
+    "Nombre": "Notariado",
+    "Nomenclatura": "NOT"
+  },
+  {
+    "Nombre": "Comunicación (Educación)",
+    "Nomenclatura": "EDUCOM"
+  },
+  {
+    "Nombre": "Centro Aparicio Saravia",
+    "Nomenclatura": "CAS"
+  }
+]

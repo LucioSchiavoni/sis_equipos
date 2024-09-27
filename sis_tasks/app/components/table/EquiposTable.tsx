@@ -56,10 +56,25 @@ const EquiposTable = () => {
         <CardContent className='flex items-center justify-center '>
           <aside className='w-[1600px] flex items-center justify-center mt-24 p-8'>
             <p className='text-3xl font-semibold text-black'>No se encontraron equipos con este nombre.</p>
+            
           </aside>
         </CardContent>
-        <CardFooter>
-      
+        <CardFooter className='flex items-center justify-center'>
+        <div className='flex flex-col  items-center gap-2 p-2'>
+           <div className='join'>
+          <button className="join-item btn" onClick={() => setPage((prev) => Math.max(prev - 1, 1))} disabled={page === 1}>
+          «
+          </button>
+          <div className="join-item btn text-xl">
+            Página <strong>{page}</strong>
+          </div>
+          <button className='join-item btn' onClick={() => setPage((prev) => prev + 1)} disabled={isFetching || (data && data.length < limit)}>
+          »
+          </button>
+          
+        </div>
+        
+        </div>
         </CardFooter>
       </Card>
     </TabsContent>

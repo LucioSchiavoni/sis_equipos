@@ -73,3 +73,12 @@ export const changePassword = async (password: string, id: string) => {
     }
   };
   
+
+  export const getListUsers = async(): Promise<any> => {
+    try {
+      const users = await prisma.user.findMany();
+      return users;
+    } catch (error) {
+      console.log(error)
+    }
+  }

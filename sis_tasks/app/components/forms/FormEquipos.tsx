@@ -10,23 +10,32 @@ import { toast } from "react-toastify"
 import { useRouter } from "next/navigation";
 import { ScrollShadow } from "@nextui-org/scroll-shadow";
 import { Spinner } from "@chakra-ui/react";
+import Area from '../../../Area.json';
+import { getListUsers } from "@/app/api/auth/actions/auth-actions";
+
 
 
 
 const FormEquipos = () => {
 
-  const [pcName, setPcName] = useState("")
   const [numSerie, setNumSerie] = useState("")
   const [unidad, setUnidad] = useState("")
   const [autor, setAutor] = useState("")
+  const [oficina, setOficina] = useState("")
+  const [equipo, setEquipo] = useState("")
     const [selectedAplicaciones, setSelectedAplicaciones] = useState<{ id: number, instalada: boolean }[]>([])
 const queryClient = useQueryClient();
     const routes = useRouter();
 
     const { data: aplicaciones, isLoading, error } = useQuery<any[]>({
-    queryKey: ['aplicaciones'],
-    queryFn:  () =>getAplicaciones()
-  })
+      queryKey: ['aplicaciones'],
+      queryFn:  () =>getAplicaciones()
+    })
+
+    const { data } = useQuery<any[]>({
+      queryKey: ['users'],
+      queryFn:  () =>getListUsers()
+    })
 
   
   if(isLoading) return ( 
@@ -38,10 +47,13 @@ const queryClient = useQueryClient();
     </div>
   )
 
+
   
   if(error) return ( 
     <div>Error al cargar los datos...</div>
   )
+
+
 
 
 const handleCheckboxChange = (aplicacionId: number) => {
@@ -60,16 +72,20 @@ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   
   try {
+    const pcName = `${unidad}-${equipo}-${oficina}`;
+    
       const equipoData = {
       pcName,
       numSerie,
-      unidad,
+      unidad: unidad === "DGS" ? "Direccion General de Secretaria" : unidad === "EDU" ? "Educacion" : unidad === "DNC" ? "Dirección Nacional de Cultura" : 
+      unidad === "PECA" ? "PECA" : "",
       autor,
       aplicaciones: selectedAplicaciones.map(app => ({
         aplicacionId: app.id,
         instalada: app.instalada
       })),
-    };
+    }; 
+    console.log(equipoData)
     const res = await createEquipo(equipoData);
     
     if (res?.success) {
@@ -89,25 +105,55 @@ if(aplicaciones)
   return (
     <div className="flex justify-center items-center">
         <form onSubmit={handleSubmit} className="border glass border-neutral-700 rounded-md  p-6 mt-24 space-y-5 w-3/12">
-          <div className="space-y-2">
-                <label htmlFor="" className="font-medium text-xl">Nombre de PC</label>
-                <Input required placeholder="DGS-PC.." className="text-black focus:border focus:outline-none border-cyan-700" value={pcName}  onChange={(e) => setPcName(e.target.value)} />
-            </div>
             <div className="space-y-2">
                 <label htmlFor="" className="font-medium text-xl">Numero de serie</label>
                 <Input required placeholder="Serie.." value={numSerie} className="text-black focus:border  focus:outline-none focus:border-cyan-600 focus:ring-cyan-600"  onChange={(e) => setNumSerie(e.target.value)} />
             </div>
-            <div className="space-y-2">
-                <label htmlFor="" className="font-medium text-xl">Unidad</label>
-                <Input required placeholder="Unidad.." value={unidad} className="text-black focus:border border-cyan-700"  onChange={(e) => setUnidad(e.target.value)} />
+            <div className="space-y-2 flex flex-col">
+              <label htmlFor="" className="font-medium text-xl">Equipo</label>
+              <select required className="px-3 py-1 rounded-md focus:border border-cyan-700 text-black"  value={equipo} onChange={(e) => setEquipo(e.target.value)}>
+                <option value="" disabled>Equipo</option>
+                <option value="PC">PC</option>
+                <option value="NOT">Notebook</option>
+                <option value="PRT">Impresora</option>
+              </select>   
             </div>
-              <div className="space-y-2">
+            <div className="space-y-2 flex flex-col">
+              <label htmlFor="" className="font-medium text-xl">Unidad</label>
+              <select required className="px-3 py-1 rounded-md focus:border border-cyan-700 text-black"  value={unidad} onChange={(e) => setUnidad(e.target.value)}>
+                <option value="" disabled>Unidad</option>
+                <option value="DGS">Direccion General de Secretaria</option>
+                <option value="EDU">Educacion</option>
+                <option value="DNC">Dirección Nacional de Cultura</option>
+                <option value="PECA">PECA</option>
+              </select>   
+            </div>
+            <div className="space-y-2 flex flex-col">
+              <label htmlFor="" className="font-medium text-xl">Oficina</label>
+              <select required className="px-3 py-1 rounded-md focus:border border-cyan-700 text-black"   value={oficina} onChange={(e) => setOficina(e.target.value)}>
+                <option value="" disabled>Oficina</option>
+                {
+                  Area.map((item, index) => (
+                   <option key={index} value={item.Nomenclatura}>
+                    {item.Nombre}
+                   </option>
+                  ))
+                }
+              </select>   
+            </div>
+              <div className="space-y-2 flex flex-col">
                 <label htmlFor="" className="font-medium text-xl">Autor</label>
-                <Input required placeholder="Autor.." value={autor}  className="text-black focus:border border-cyan-700" onChange={(e) => setAutor(e.target.value)} />
+                <select className="text-black px-3 py-1 rounded-md" value={autor} onChange={(e) => setAutor(e.target.value)}>
+                  <option value="" disabled>Usuarios</option>
+                  {
+                    data?.map((item, index) => (
+                      <option key={index} value={item.name}>{item.name}</option>
+                    ))
+                  }
+                </select>
+             
             </div>
     
-
-
             {
               !aplicaciones || aplicaciones.length === 0 ? <div>No hay aplicaciones disponibles</div> : null
             }
