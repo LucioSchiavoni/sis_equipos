@@ -306,5 +306,9 @@
   {
     "Nombre": "Centro Aparicio Saravia",
     "Nomenclatura": "CAS"
+  },
+  {
+    "Nombre": "Registro Civil",
+    "Nomenclatura": "REC"
   }
 ]
