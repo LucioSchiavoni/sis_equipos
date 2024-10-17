@@ -78,7 +78,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       pcName,
       numSerie,
       unidad: unidad === "DGS" ? "Direccion General de Secretaria" : unidad === "EDU" ? "Educacion" : unidad === "DNC" ? "Dirección Nacional de Cultura" : 
-      unidad === "PECA" ? "PECA" : "",
+      unidad === "PECA" ? "PECA" : unidad === "DEP" ? "Deposito" : "Otro",
       autor,
       aplicaciones: selectedAplicaciones.map(app => ({
         aplicacionId: app.id,
@@ -126,6 +126,7 @@ if(aplicaciones)
                 <option value="EDU">Educacion</option>
                 <option value="DNC">Dirección Nacional de Cultura</option>
                 <option value="PECA">PECA</option>
+                <option value="DEP">Deposito</option>
               </select>   
             </div>
             <div className="space-y-2 flex flex-col">

@@ -310,5 +310,9 @@
   {
     "Nombre": "Registro Civil",
     "Nomenclatura": "REC"
+  },
+  {
+    "Nombre": "Deposito",
+    "Nomenclatura": "DEP"
   }
 ]
